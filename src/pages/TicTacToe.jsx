@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 
 const TicTacToe = () => {
-   const [casilla, setCasilla] =  useState([[0, null, null], 
-                                            [null, null, null],
-                                            [null, null, null]])
+   const [fila, setFila] =  useState([[null, null, null], 
+                                      [null, null, null],
+                                      [null, null, null]])
 
-    console.log(casilla.forEach(element => element.forEach(e => console.log(e))))
+//    fila.map((tira, tiraIndex) => {
+//     tira.map((celda, index) => {
+//         console.log(`celda ${celda} tira ${tiraIndex}index ${index}`)
+//     })
+//    })
 
   return (
     <>
@@ -15,9 +19,13 @@ const TicTacToe = () => {
     <button>O</button>
     <h2>Es turno de ____</h2>
     <br />
-    <button value={casilla[0][0]}>{casilla[0][0]}</button> <button></button> <button></button>
-    <button></button> <button></button> <button></button>
-    <button></button><button></button><button></button>
+   <div className='board'>
+    {fila.map((tira, tiraIndex) => {
+        return tira.map((celda, index) => {
+       return <button key={`${tiraIndex}-${index}`}></button>
+        })
+     })}
+   </div>
     </>
   )
 }
