@@ -1,31 +1,30 @@
 import React, { useState } from 'react'
 
 const TicTacToe = () => {
-   const [fila, setFila] =  useState([[null, null, null], 
-                                      [null, null, null],
-                                      [null, null, null]])
+  const [board, setBoard] = useState([null, null, null, null, null, null, null, null, null])
 
-//    fila.map((tira, tiraIndex) => {
-//     tira.map((celda, index) => {
-//         console.log(`celda ${celda} tira ${tiraIndex}index ${index}`)
-//     })
-//    })
+  const handleClick = (index) => {
+    if (board[index] != null) {
+      return
+    }
+    const newBoard = [...board];
+    newBoard[index] = 'X';
+    setBoard(newBoard)
+  }
 
   return (
     <>
-     <h1>Tic Tac Toe</h1>
-    <button>Inicia la partida</button> <br />
-    <button>X</button>
-    <button>O</button>
-    <h2>Es turno de ____</h2>
-    <br />
-   <div className='board'>
-    {fila.map((tira, tiraIndex) => {
-        return tira.map((celda, index) => {
-       return <button key={`${tiraIndex}-${index}`}></button>
-        })
-     })}
-   </div>
+      <h1>Tic Tac Toe</h1>
+      <button>Inicia la partida</button> <br />
+      <button>X</button>
+      <button>O</button>
+      <h2>Es turno de ____</h2>
+      <br />
+      <div className='board'>
+        {board.map((cell, index) => {
+          return <button key={index} onClick={() => handleClick(index)} value={cell}>{cell}</button>
+        })}
+      </div>
     </>
   )
 }
@@ -37,3 +36,10 @@ export default TicTacToe
 //estado de isStarted que crea todos los valores a ''
 //un estado que define que valor tiene el jugador y cual la computadora
 //
+
+
+{/* {fila.map((tira, tiraIndex) => {
+        return tira.map((celda, index) => {
+       return <button key={`${tiraIndex}-${index}`}></button>
+        })
+     })} */}
