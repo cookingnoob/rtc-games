@@ -16,12 +16,16 @@ const TicTacToe = () => {
   const choosePlayerValue = (e) => {
     setPlayer(e.target.value)
   }
+
+  const resetGame = () => {
+    setBoard([null, null, null, null, null, null, null, null, null])
+  }
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <button>Inicia la partida</button> <br />
-      <button onClick={choosePlayerValue} value={'X'}>X</button>
-      <button onClick={choosePlayerValue} value={'O'}>O</button>
+      <button onClick={resetGame}>Inicia la partida</button> <br />
+      <button onClick={choosePlayerValue} value={'X'} className=''>X</button>
+      <button onClick={choosePlayerValue} value={'O'} className=''>O</button>
       <h2>Es turno de ____</h2>
       <br />
       <div className='board'>
