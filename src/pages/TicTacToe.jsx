@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ResetTicTacToe from '../components/ResetTicTacToe';
 
 const TicTacToe = () => {
@@ -16,36 +16,47 @@ const TicTacToe = () => {
     const newBoard = [...board];
     newBoard[index] = player;
     setBoard(newBoard)
-    computerTurn()
-  }
+  };
 
-  const computerValue = () => {
-    if (player === 'X'){
-      setComputer('O');
-      console.log(computer)
-    }else if (player === 'O'){
-      setComputer('X');
-      console.log(computer)
-    }
-  }
 
-  const computerTurn = () => {
-    if (computer == null){
-      return
-    }
-    board.map((cell, index) => {
-      if (cell != null){
-        const newBoard = [...board];
-        newBoard[index] = computer;
-        setBoard(newBoard)
-      }
-    })
+useEffect(() =>{
+  if(player === null){
+    console.log('aun no hay jugador')
+  } else if(player === 'X'){
+    setComputer('O')
+  } else if (player === 'O'){
+    setComputer('X')
   }
+  // const computerValue = () => {
+  //   if (player === 'X'){
+  //     setComputer('O');
+  //     console.log(computer)
+  //   }else if (player === 'O'){
+  //     setComputer('X');
+  //     console.log(computer)
+  //   }
+  // };
+  // computerValue()
+  // const computerTurn = () => {
+  //   if (computer == null){
+  //     return
+  //   }
+  //   board.map((cell, index) => {
+  //     if (cell != null){
+  //       const newBoard = [...board];
+  //       newBoard[index] = computer;
+  //       setBoard(newBoard)
+  //     }
+  //   })
+  // }
+  // computerTurn()
+  console.log(`board: ${board}, player: ${player}, computer: ${computer}`)
+}, [player, computer])
+
 
 
   const choosePlayerValue = (e) => {
     setPlayer(e.target.value)
-    computerValue()
   }
 
 
