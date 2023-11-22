@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ResetTicTacToe from '../components/ResetTicTacToe';
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null, null, null, null, null, null, null, null, null])
@@ -47,16 +48,11 @@ const TicTacToe = () => {
     computerValue()
   }
 
-  const resetGame = () => {
-    setBoard([null, null, null, null, null, null, null, null, null])
-    setPlayer(null)
-    setComputer(null)
-    setText('Escoge una ficha')
-  }
+
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <button onClick={resetGame}>Inicia la partida</button> <br />
+      <ResetTicTacToe setBoard={setBoard} setComputer={setComputer} setPlayer={setPlayer} setText={setText}/>
       <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
       <button onClick={choosePlayerValue} value={'O'} className='checkerValue'>O</button>
       <h2>{text}</h2>
