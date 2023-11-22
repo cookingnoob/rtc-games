@@ -15,6 +15,7 @@ const TicTacToe = () => {
     const newBoard = [...board];
     newBoard[index] = player;
     setBoard(newBoard)
+    computerTurn()
   }
 
   const computerValue = () => {
@@ -27,6 +28,20 @@ const TicTacToe = () => {
     }
   }
 
+  const computerTurn = () => {
+    if (computer == null){
+      return
+    }
+    board.map((cell, index) => {
+      if (cell != null){
+        const newBoard = [...board];
+        newBoard[index] = computer;
+        setBoard(newBoard)
+      }
+    })
+  }
+
+
   const choosePlayerValue = (e) => {
     setPlayer(e.target.value)
     computerValue()
@@ -35,6 +50,7 @@ const TicTacToe = () => {
   const resetGame = () => {
     setBoard([null, null, null, null, null, null, null, null, null])
     setPlayer(null)
+    setComputer(null)
     setText('Escoge una ficha')
   }
   return (
