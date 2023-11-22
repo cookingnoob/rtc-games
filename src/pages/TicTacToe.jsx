@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const TicTacToe = () => {
   const [board, setBoard] = useState([null, null, null, null, null, null, null, null, null])
   const [player, setPlayer] = useState(null);
-
   const handleBoardClick = (index) => {
     if (board[index] != null) {
       return
@@ -15,6 +14,7 @@ const TicTacToe = () => {
 
   const choosePlayerValue = (e) => {
     setPlayer(e.target.value)
+
   }
 
   const resetGame = () => {
@@ -30,7 +30,7 @@ const TicTacToe = () => {
       <br />
       <div className='board'>
         {board.map((cell, index) => {
-          return <button key={index} onClick={() => handleBoardClick(index)} value={cell}>{cell}</button>
+          return <button key={index} onClick={() => handleBoardClick(index)} value={cell} className='cell'>{cell}</button>
         })}
       </div>
     </>
