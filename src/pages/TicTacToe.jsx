@@ -7,13 +7,14 @@ import ResetTicTacToe from '../components/ResetTicTacToe';
 const TicTacToe = () => {
   const [board, setBoard] = useState([null, null, null, null, null, null, null, null, null])
   const [text, setText] = useState('Escoge una ficha');
+  const [turn, setTurn] = useState(null)
   const player = useRef(null);
   const computer = useRef(null);
 
   const choosePlayerValue = (e) => {
     player.current = e.target.value;
     computerValue(player);
-
+    handleTurns()
   }
 
   const computerValue = (player) => { 
@@ -38,11 +39,28 @@ const TicTacToe = () => {
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
     setBoard(newBoard);
+    console.log(turn)
   };
 
   const computerTurn = () => {
     let index = Math.floor(Math.random() * 9);
     board[index] == null ? handleBoardInput(index, computer.current) : computerTurn();
+  }
+
+  const handleTurns = () => {
+    if(turn == null){
+      let randomNumber = Math.floor(Math.random() * 10);
+      if(randomNumber < 5){
+        setTurn(computer.current);
+        setText('turno de computadora')
+      } else {
+        setTurn(player.current), 
+        setText('turno de jugador')
+      }
+                         
+      
+    }
+    
   }
 
   return (
