@@ -29,20 +29,17 @@ const TicTacToe = () => {
   }
 
 
-  const handleBoardClick = (index) => {
+  const handleTurn = (index, currentPlayer) => {
     if (board[index] != null) {
       return
     } else if (player.current == null){
       setText('no has escogido una ficha')
     }
     const newBoard = [...board];
-    //cambiar este a current value para que quien pase el valor del jugador sea el click
-    newBoard[index] = player.current;
+    newBoard[index] = currentPlayer;
     setBoard(newBoard);
     computerTurn()
   };
-
-  
 
   return (
     <>
@@ -56,14 +53,11 @@ const TicTacToe = () => {
                   </div> :
                    <></>
     }
-
-
-     
       <h2>{text}</h2>
       <br />
       <div className='board'>
         {board.map((cell, index) => {
-          return <button key={index} onClick={() => handleBoardClick(index)} value={cell} className='cell'>{cell}</button>
+          return <button key={index} onClick={() => handleTurn(index, player.current)} value={cell} className='cell'>{cell}</button>
         })}
       </div>
     </>
