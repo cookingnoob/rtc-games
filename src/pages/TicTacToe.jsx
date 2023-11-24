@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ResetTicTacToe from '../components/ResetTicTacToe';
 
 const TicTacToe = () => {
@@ -9,27 +9,28 @@ const TicTacToe = () => {
   const computer = useRef(null);
 
     const computerValue = (player) => { 
-      if (player === null){
+      if (player.current === null){
         setText('no hay jugador')
-      } else if(player === 'X'){
+      } else if(player.current === 'X'){
         return computer.current = 'O'
-      } else if (player === 'O'){
+      } else if (player.current === 'O'){
         return computer.current = 'X'
       }
-    }
 
-  const computerTurn = () => {
-    console.log(board)
-    board.map((cell, index) => {
-      if (cell != null){
-        return
-      }else if (cell == null){
-        const newBoardTwo = [...board];
-        newBoardTwo[index] = computer;
-        setBoard(newBoardTwo)
-      }
-    })
-  }
+    }
+ 
+  // const computerTurn = () => {
+  //   console.log(board)
+  //   board.map((cell, index) => {
+  //     if (cell != null){
+  //       return
+  //     }else if (cell == null){
+  //       const newBoardTwo = [...board];
+  //       newBoardTwo[index] = computer;
+  //       setBoard(newBoardTwo)
+  //     }
+  //   })
+  // }
 
   const handleBoardClick = (index) => {
     if (board[index] != null) {
@@ -40,10 +41,9 @@ const TicTacToe = () => {
     const newBoard = [...board];
     newBoard[index] = player.current;
     setBoard(newBoard);
-    
+    console.log(computer.current)
   };
 
-    //handleBoardClick y computerTurn son basicamente la misma funcion, como solo hacerlo una?
   const choosePlayerValue = (e) => {
     player.current = e.target.value;
     computerValue(player);
