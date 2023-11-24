@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import ResetTicTacToe from '../components/ResetTicTacToe';
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null, null, null, null, null, null, null, null, null])
-  // const [player, setPlayer] = useState(null);
-  // const [computer, setComputer] = useState(null);
   const [text, setText] = useState('Escoge una ficha');
 
   const player = useRef(null);
@@ -21,6 +19,7 @@ const TicTacToe = () => {
     }
 
   const computerTurn = () => {
+    console.log(board)
     board.map((cell, index) => {
       if (cell != null){
         return
@@ -35,15 +34,16 @@ const TicTacToe = () => {
   const handleBoardClick = (index) => {
     if (board[index] != null) {
       return
-    } else if (player == null){
+    } else if (player.current == null){
       setText('no has escogido una ficha')
     }
     const newBoard = [...board];
     newBoard[index] = player.current;
     setBoard(newBoard);
-
+    
   };
 
+    //handleBoardClick y computerTurn son basicamente la misma funcion, como solo hacerlo una?
   const choosePlayerValue = (e) => {
     player.current = e.target.value;
     computerValue(player);
