@@ -9,9 +9,7 @@ const TicTacToe = () => {
 
 
       //tiene que escoger un numero aleatorio del array y de ahi pasar el valor de la computadora
-  const computerTurn = () => {
-  console.log(computer.current)
-  }
+
 
   const choosePlayerValue = (e) => {
     player.current = e.target.value;
@@ -33,13 +31,22 @@ const TicTacToe = () => {
     if (board[index] != null) {
       return
     } else if (player.current == null){
-      setText('no has escogido una ficha')
+      setText('no has escogido una ficha');
+      return
     }
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
     setBoard(newBoard);
-    computerTurn()
+    console.log(board)
+    if(currentPlayer == player.current){
+      computerTurn()
+    }
   };
+
+  const computerTurn = () => {
+    let index = Math.floor(Math.random() * 9);
+    handleTurn(index, computer.current)
+  }
 
   return (
     <>
