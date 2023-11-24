@@ -34,10 +34,11 @@ const TicTacToe = () => {
       setText('no has escogido una ficha');
       return
     }
+    setText(`Es turno de ${currentPlayer}`)
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
     setBoard(newBoard);
-    console.log(board)
+    console.log(board);
     if(currentPlayer == player.current){
       computerTurn()
     }
@@ -52,7 +53,6 @@ const TicTacToe = () => {
     <>
       <h1>Tic Tac Toe</h1>
       <ResetTicTacToe setBoard={setBoard} setText={setText}/>
-     
       {player.current === null ?    
                   <div>    
                     <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
