@@ -1,11 +1,12 @@
 import React from 'react'
 
-const ResetTicTacToe = ({setBoard, setComputer, setPlayer, setText}) => {
+const ResetTicTacToe = ({setBoard,  setText, player, computer}) => {
     const resetGame = () => {
         setBoard([null, null, null, null, null, null, null, null, null])
-        setPlayer(null)
-        setComputer(null)
+        player.current = null;
+        computer.current = null;
         setText('Escoge una ficha')
+  
       }
   return (
     <>

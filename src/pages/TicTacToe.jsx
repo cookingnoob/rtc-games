@@ -7,13 +7,10 @@ const TicTacToe = () => {
   const player = useRef(null);
   const computer = useRef(null);
 
-
-      //tiene que escoger un numero aleatorio del array y de ahi pasar el valor de la computadora
-
-
   const choosePlayerValue = (e) => {
     player.current = e.target.value;
     computerValue(player);
+    console.log(player.current)
   }
 
   const computerValue = (player) => { 
@@ -28,9 +25,11 @@ const TicTacToe = () => {
 
 
   const handleTurn = (index, currentPlayer) => {
-    if (board[index] != null) {
+    if (board[index] !== null && currentPlayer == player.current) {
       return
-    } else if (player.current == null){
+    } else if (board[index] !== null && currentPlayer == computer.current){
+      computerTurn()
+    }else if (player.current == null){
       setText('no has escogido una ficha');
       return
     }
@@ -52,7 +51,7 @@ const TicTacToe = () => {
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <ResetTicTacToe setBoard={setBoard} setText={setText}/>
+      <ResetTicTacToe setBoard={setBoard} setText={setText} player={player} computer={computer}/>
       {player.current === null ?    
                   <div>    
                     <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
