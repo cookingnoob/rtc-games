@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import{ useRef, useState } from 'react'
 import ResetTicTacToe from '../components/ResetTicTacToe';
 
 //necesito crear algo que inicie el juego aleatoriamente en mi turno o el de computadora
@@ -26,7 +26,26 @@ const TicTacToe = () => {
       return computer.current = 'X'
     }
   }
+  
+  const gameStart = () => {
+    if(turn == null){
+      let randomNumber = Math.floor(Math.random() * 2);
+      if(randomNumber <= 1){
+        setTurn('computadora');
+        setText('La computadora comienza la partida')
+        computerTurn(board)
+      } else {
+        setTurn('player'), 
+        setText('El jugador comienza la partida')
+      }
+    }
+  }
 
+  const computerTurn = (board) => {
+    const emptyCells = board.map((cell, index) => cell == null ? index : null).filter(index => index !== null)
+    let freeIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    handleBoardInput(freeIndex, computer.current)
+  }
 
   const handleBoardInput = (index, currentPlayer) => {
     if (board[index] !== null) {
@@ -39,31 +58,20 @@ const TicTacToe = () => {
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
     setBoard(newBoard);
+    handleTurns(turn);
   };
 
-  const computerTurn = () => {
-    let index = Math.floor(Math.random() * 9);
-    board[index] == null ? handleBoardInput(index, computer.current) : computerTurn();
-  }
-
-  const gameStart = () => {
-    if(turn == null){
-      let randomNumber = Math.floor(Math.random() * 10);
-      if(randomNumber < 5){
-        setTurn(computer.current);
-        setText('La computadora comienza la partida')
-        computerTurn()
-      } else {
-        setTurn(player.current), 
-        setText('El jugador comienza la partida')
-      }
+  const handleTurns = (turn) =>{
+    if(turn === null){
+      return
+    } else if(turn === 'computadora'){
+      computerTurn(board)
+      setTurn('player')
+    } else if (turn === 'player'){
+      setTurn('computadora')
     }
   }
 
-  const handleTurns = (turn) =>{
-    console.log(turn)
-  }
-  handleTurns(turn)
   return (
     <>
       <h1>Tic Tac Toe</h1>
