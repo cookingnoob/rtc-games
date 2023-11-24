@@ -4,33 +4,30 @@ import ResetTicTacToe from '../components/ResetTicTacToe';
 const TicTacToe = () => {
   const [board, setBoard] = useState([null, null, null, null, null, null, null, null, null])
   const [text, setText] = useState('Escoge una ficha');
-
   const player = useRef(null);
   const computer = useRef(null);
 
-    const computerValue = (player) => { 
-      if (player.current === null){
-        setText('no hay jugador')
-      } else if(player.current === 'X'){
-        return computer.current = 'O'
-      } else if (player.current === 'O'){
-        return computer.current = 'X'
-      }
 
+      //tiene que escoger un numero aleatorio del array y de ahi pasar el valor de la computadora
+  const computerTurn = () => {
+  console.log(computer.current)
+  }
+
+  const choosePlayerValue = (e) => {
+    player.current = e.target.value;
+    computerValue(player);
+  }
+
+  const computerValue = (player) => { 
+    if (player.current === null){
+      setText('no hay jugador')
+    } else if(player.current === 'X'){
+      return computer.current = 'O'
+    } else if (player.current === 'O'){
+      return computer.current = 'X'
     }
- 
-  // const computerTurn = () => {
-  //   console.log(board)
-  //   board.map((cell, index) => {
-  //     if (cell != null){
-  //       return
-  //     }else if (cell == null){
-  //       const newBoardTwo = [...board];
-  //       newBoardTwo[index] = computer;
-  //       setBoard(newBoardTwo)
-  //     }
-  //   })
-  // }
+  }
+
 
   const handleBoardClick = (index) => {
     if (board[index] != null) {
@@ -39,22 +36,29 @@ const TicTacToe = () => {
       setText('no has escogido una ficha')
     }
     const newBoard = [...board];
+    //cambiar este a current value para que quien pase el valor del jugador sea el click
     newBoard[index] = player.current;
     setBoard(newBoard);
-    console.log(computer.current)
+    computerTurn()
   };
 
-  const choosePlayerValue = (e) => {
-    player.current = e.target.value;
-    computerValue(player);
-  }
+  
 
   return (
     <>
       <h1>Tic Tac Toe</h1>
       <ResetTicTacToe setBoard={setBoard} setText={setText}/>
-      <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
-      <button onClick={choosePlayerValue} value={'O'} className='checkerValue'>O</button>
+     
+      {player.current === null ?    
+                  <div>    
+                    <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
+                    <button onClick={choosePlayerValue} value={'O'} className='checkerValue'>O</button> 
+                  </div> :
+                   <></>
+    }
+
+
+     
       <h2>{text}</h2>
       <br />
       <div className='board'>
