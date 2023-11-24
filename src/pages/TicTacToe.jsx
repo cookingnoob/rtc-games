@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ResetTicTacToe from '../components/ResetTicTacToe';
 
 //necesito crear algo que inicie el juego aleatoriamente en mi turno o el de computadora
@@ -14,7 +14,7 @@ const TicTacToe = () => {
   const choosePlayerValue = (e) => {
     player.current = e.target.value;
     computerValue(player);
-    handleTurns()
+    gameStart()
   }
 
   const computerValue = (player) => { 
@@ -34,12 +34,11 @@ const TicTacToe = () => {
     } else if (player.current == null){
       setText('no has escogido una ficha');
       return
-    }
+    } 
     setText(`Es turno de ${currentPlayer}`)
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
     setBoard(newBoard);
-    console.log(turn)
   };
 
   const computerTurn = () => {
@@ -47,26 +46,28 @@ const TicTacToe = () => {
     board[index] == null ? handleBoardInput(index, computer.current) : computerTurn();
   }
 
-  const handleTurns = () => {
+  const gameStart = () => {
     if(turn == null){
       let randomNumber = Math.floor(Math.random() * 10);
       if(randomNumber < 5){
         setTurn(computer.current);
-        setText('turno de computadora')
+        setText('La computadora comienza la partida')
+        computerTurn()
       } else {
         setTurn(player.current), 
-        setText('turno de jugador')
+        setText('El jugador comienza la partida')
       }
-                         
-      
     }
-    
   }
 
+  const handleTurns = (turn) =>{
+    console.log(turn)
+  }
+  handleTurns(turn)
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <ResetTicTacToe setBoard={setBoard} setText={setText} player={player} computer={computer}/>
+      <ResetTicTacToe setBoard={setBoard} setText={setText} player={player} computer={computer} setTurn={setTurn}/>
       {player.current === null ?    
                   <div>    
                     <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
