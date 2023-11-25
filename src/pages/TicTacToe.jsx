@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import ResetTicTacToe from "../components/ResetTicTacToe";
 
 //necesito crear algo que inicie el juego aleatoriamente en mi turno o el de computadora
@@ -51,7 +51,6 @@ const TicTacToe = () => {
       if (randomNumber === 0) {
         setTurn("computadora");
         setText("La computadora comienza la partida");
-        computerTurn()
       } else {
         setTurn("player");
         setText("El jugador comienza la partida");
@@ -66,32 +65,34 @@ const TicTacToe = () => {
     return emptyCells[Math.floor(Math.random() * emptyCells.length)];
   };
 
-  const computerTurn = () => {
+  const handleBoardInput = useCallback(
+    (index, currentPlayer) => {
+      if (board[index] !== null) {
+        return;
+      } else if (player.current == null) {
+        setText("no has escogido una ficha");
+        return;
+      }
+      const newBoard = [...board];
+      newBoard[index] = currentPlayer;
+      setBoard(newBoard);
+      /**
+       * Cuando el jugador en turno selecciona su casilla, el turno se pasa al otro
+       */
+      if (turn === 'computadora'){
+        passTurnTo('player')
+      } else if (turn === 'player'){
+        passTurnTo('computadora')
+      }
+    }
+  ,[board, turn]);
+
+useEffect(() => {
+  if(turn === 'computadora'){
     const freeIndex = chooseFreeSpace(board);
     handleBoardInput(freeIndex, computer.current);
-  };
-
-  const handleBoardInput = (index, currentPlayer) => {
-    if (board[index] !== null) {
-      return;
-    } else if (player.current == null) {
-      setText("no has escogido una ficha");
-      return;
-    }
-    const newBoard = [...board];
-    newBoard[index] = currentPlayer;
-    setBoard(newBoard);
-    /**
-     * Cuando el jugador en turno selecciona su casilla, el turno se pasa al otro
-     */
-    if (turn === 'computadora'){
-      passTurnTo('player')
-    } else if (turn === 'player'){
-      passTurnTo('computadora')
-      computerTurn()
-    }
-    
-  };
+  }
+}, [board, handleBoardInput, turn])
 
   /**
    * Passes the turn to `nextPlayer`, updating state and messages
