@@ -4,9 +4,6 @@
   padding: 2rem;
   text-align: center;
 }
-body{
-  background-color:;
-}
 
 
 .card {
@@ -19,11 +16,14 @@ body{
   grid-template-rows: repeat(3, 200px);
   gap: 10px;
 }
-.board:hover{
-  
-}
+
 .cell:hover{
   cursor: pointer;
   background-color: whitesmoke;
   color: black ;
+}
+
+.cell:disabled {
+  background-color: gray;
+  color: white;
 }
