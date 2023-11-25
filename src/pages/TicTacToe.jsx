@@ -17,7 +17,7 @@ const TicTacToe = () => {
     gameStart()
   }
 
-  const computerValue = (player) => { 
+  const computerValue = (player) => {
     if (player.current === null){
       setText('no hay jugador')
     } else if(player.current === 'X'){
@@ -26,16 +26,16 @@ const TicTacToe = () => {
       return computer.current = 'X'
     }
   }
-  
+
   const gameStart = () => {
     if(turn == null){
       let randomNumber = Math.floor(Math.random() * 2);
-      if(randomNumber <= 1){
+      if(randomNumber < 1){
         setTurn('computadora');
         setText('La computadora comienza la partida')
         computerTurn(board)
       } else {
-        setTurn('player'), 
+        setTurn('player'),
         setText('El jugador comienza la partida')
       }
     }
@@ -44,54 +44,84 @@ const TicTacToe = () => {
   const computerTurn = (board) => {
     const emptyCells = board.map((cell, index) => cell == null ? index : null).filter(index => index !== null)
     let freeIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    handleBoardInput(freeIndex, computer.current)
+    playTurn(freeIndex, computer.current)
+    passTurn("player")
   }
 
-  const handleBoardInput = (index, currentPlayer) => {
+  const playTurn = (index, currentPlayer) => {
     if (board[index] !== null) {
       return
     } else if (player.current == null){
       setText('no has escogido una ficha');
       return
-    } 
-    setText(`Es turno de ${currentPlayer}`)
+    }
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
     setBoard(newBoard);
-    handleTurns(turn);
   };
 
-  const handleTurns = (turn) =>{
+  const passTurn = (turn) =>{
     if(turn === null){
       return
     } else if(turn === 'computadora'){
-      computerTurn(board)
-      setTurn('player')
-    } else if (turn === 'player'){
       setTurn('computadora')
+      computerTurn(board)
+    } else if (turn === 'player'){
+      setTurn('player')
     }
   }
 
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <ResetTicTacToe setBoard={setBoard} setText={setText} player={player} computer={computer} setTurn={setTurn}/>
-      {player.current === null ?    
-                  <div>    
-                    <button onClick={choosePlayerValue} value={'X'} className='checkerValue'>X</button>
-                    <button onClick={choosePlayerValue} value={'O'} className='checkerValue'>O</button> 
-                  </div> :
-                   <></>
-    }
+      <ResetTicTacToe
+        setBoard={setBoard}
+        setText={setText}
+        player={player}
+        computer={computer}
+        setTurn={setTurn}
+      />
+      {player.current === null ? (
+        <div>
+          <button
+            onClick={choosePlayerValue}
+            value={"X"}
+            className="checkerValue"
+          >
+            X
+          </button>
+          <button
+            onClick={choosePlayerValue}
+            value={"O"}
+            className="checkerValue"
+          >
+            O
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
       <h2>{text}</h2>
       <br />
-      <div className='board'>
+      <div className="board">
         {board.map((cell, index) => {
-          return <button key={index} onClick={() => handleBoardInput(index, player.current)} value={cell} className='cell'>{cell}</button>
+          return (
+            <button
+              key={index}
+              onClick={() => {
+                playTurn(index, player.current);
+                passTurn("computadora")
+              }}
+              value={cell}
+              className="cell"
+            >
+              {cell}
+            </button>
+          );
         })}
       </div>
     </>
-  )
+  );
 }
 
 export default TicTacToe
