@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ResetTicTacToe from "../components/ResetTicTacToe";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useCallback } from "react";
@@ -135,6 +134,17 @@ const TicTacToe = () => {
   };
 
   /**
+   * Restarts the game, emptying the board, emptying the symbols and the turns
+   */
+  const resetGame = () => {
+    setBoard([null, null, null, null, null, null, null, null, null]);
+    playerSymbol.current = null;
+    computerSymbol.current = null;
+    setText("Escoge una ficha");
+    setCurrentTurn(null);
+  };
+
+  /**
    * Plays a symbol on a specific position of the board
    *
    * Le cambié el nombre a la función y a los argumentos para que sea más claro qué hace la
@@ -246,13 +256,13 @@ const TicTacToe = () => {
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <ResetTicTacToe
-        setBoard={setBoard}
-        setText={setText}
-        player={playerSymbol}
-        computer={computerSymbol}
-        setTurn={setCurrentTurn}
-      />
+      {/**
+       * Eliminé el componente ResetTicTacToe porque era un poco redundante
+       * y además su función usaba un montón de lógica definida acá, y era
+       * una pasadera de props innecesaria.
+       */}
+      <button onClick={resetGame}>Inicia la partida</button>
+      <br />
       {
         /**
          * Cambie el inline if (x ? y : z) por un &&
