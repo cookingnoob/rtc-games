@@ -1,32 +1,27 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import ResetTicTacToe from "../components/ResetTicTacToe";
 
-//necesito crear algo que inicie el juego aleatoriamente en mi turno o el de computadora
-//revisar que computadora o jugador hicieron su movimiento para activar el siguiente
+//falta coordinar el orden que se ejecutan los componentes de acuerdo a React
+//refactorizar el codigo a componentes
 
 const TicTacToe = () => {
-  const [board, setBoard] = useState([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
+
+  const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
   const [text, setText] = useState("Escoge una ficha");
   const [turn, setTurn] = useState(null);
+  const [winner, setWinner] = useState(null)
   const player = useRef(null);
   const computer = useRef(null);
 
+
+  //Cuando el usuario le da clic a X o O obtiene se le asigna un valor
   const choosePlayerValue = (value) => {
     player.current = value;
     computerValue(player);
     gameStart();
   };
 
+//la computadora toma el valor que el usuario no tomo
   const computerValue = (player) => {
     if (player.current === null) {
       setText("no hay jugador");
@@ -37,16 +32,9 @@ const TicTacToe = () => {
     }
   };
 
-  /**
-   * Elegir aleatoriamente quién empieza el juego
-   */
+//se elige aleatoriamente quien va a empezar el juego
   const gameStart = () => {
     if (turn == null) {
-      /*
-        Math.random = [0,1)
-        Math.random * 2 = [0,2)
-        Math.floor(Math.random * 2) = {0,1}
-      */
       let randomNumber = Math.floor(Math.random() * 2);
       if (randomNumber === 0) {
         setTurn("computadora");
@@ -58,6 +46,7 @@ const TicTacToe = () => {
     }
   };
 
+//busca en board que celdas estan sin valor para que la computadora puede elegir entre ellas
   const chooseFreeSpace = (board) => {
     const emptyCells = board
       .map((cell, index) => (cell == null ? index : null))
@@ -65,6 +54,7 @@ const TicTacToe = () => {
     return emptyCells[Math.floor(Math.random() * emptyCells.length)];
   };
 
+//imprime el valor del jugador actual en el tablero
   const handleBoardInput = useCallback(
     (index, currentPlayer) => {
       if (board[index] !== null) {
@@ -76,10 +66,11 @@ const TicTacToe = () => {
       const newBoard = [...board];
       newBoard[index] = currentPlayer;
       setBoard(newBoard);
-      /**
-       * Cuando el jugador en turno selecciona su casilla, el turno se pasa al otro
-       */
-      if (turn === 'computadora'){
+      winningConditions(turn, board)
+      if(winner != null){
+        setText(`Ganó ${winner}`);
+        return
+      } else if (turn === 'computadora'){
         passTurnTo('player')
       } else if (turn === 'player'){
         passTurnTo('computadora')
@@ -87,11 +78,14 @@ const TicTacToe = () => {
     }
   ,[board, turn]);
 
+//hace el turno de la computadora
 useEffect(() => {
-  if(turn === 'computadora'){
-    const freeIndex = chooseFreeSpace(board);
-    handleBoardInput(freeIndex, computer.current);
-  }
+  setTimeout(() => {
+    if(turn === 'computadora'){
+      const freeIndex = chooseFreeSpace(board);
+      handleBoardInput(freeIndex, computer.current);
+    }
+  }, 1000);
 }, [board, handleBoardInput, turn])
 
   /**
@@ -108,17 +102,51 @@ useEffect(() => {
       setText('Turno del player')
     }
   };
+// funcion que checa si las combinaciones ganadoras tienen el mismo valor
+// si todas las casillas tienen un valor que no es null y nadie gano, declarar empate
+
+    const winningConditions = (turn, board) => {
+      const winningCombinations = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+  
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+  
+        [0,4,8],
+        [2,4,6],
+      ];
+
+      winningCombinations.forEach(combination => {
+        const [a, b, c] = combination;
+        if(board[a] != null && board[a] == board[b] && board[b] == board[c] && board[a] == board[c]){
+          if(turn == 'computadora'){
+            setWinner(`🧘🏽`)
+          } else if (turn == 'player'){
+            setWinner('🤖')
+          }
+        }
+      });
+
+    }
+
+      const resetGame = () => {
+          setBoard([null, null, null, null, null, null, null, null, null])
+          player.current = null;
+          computer.current = null;
+          setText('Escoge una ficha');
+          setTurn(null);
+          setWinner(null)
+        }
 
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <ResetTicTacToe
-        setBoard={setBoard}
-        setText={setText}
-        player={player}
-        computer={computer}
-        setTurn={setTurn}
-      />
+      {/* resetea todos los estados */}
+      <button onClick={resetGame}>Reinicia el juego </button>
+      {/* el jugador escoge un || retorna el valor del jugador y de la computadora */}
       {player.current === null ? (
         <div>
           <button
@@ -139,8 +167,10 @@ useEffect(() => {
       ) : (
         <></>
       )}
+      {/* recibe textos de diferentes componentes */}
       <h2>{text}</h2>
       <br />
+      {/* crea una celda por cada elemento del estado || recive un valor */}
       <div className="board">
         {board.map((cell, index) => {
           return (
@@ -160,5 +190,6 @@ useEffect(() => {
     </>
   );
 };
+
 
 export default TicTacToe;
