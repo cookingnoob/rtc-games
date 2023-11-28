@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import ResetTicTacToe from "../components/ResetTicTacToe";
 
 //falta coordinar el orden que se ejecutan los componentes de acuerdo a React
 //refactorizar el codigo a componentes
 
 const TicTacToe = () => {
-
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
   const [text, setText] = useState("Escoge una ficha");
   const [turn, setTurn] = useState(null);
-  const [winner, setWinner] = useState(null)
+  const [winner, setWinner] = useState(null);
   const player = useRef(null);
   const computer = useRef(null);
 
@@ -18,7 +16,7 @@ const TicTacToe = () => {
   const choosePlayerValue = (value) => {
     player.current = value;
     computerValue(player);
-    gameStart();
+    setText(`Has escogido ${value}`)
   };
 
 //la computadora toma el valor que el usuario no tomo
@@ -145,27 +143,19 @@ useEffect(() => {
     <>
       <h1>Tic Tac Toe</h1>
       {/* resetea todos los estados */}
-      <button onClick={resetGame}>Reinicia el juego </button>
+  
       {/* el jugador escoge un || retorna el valor del jugador y de la computadora */}
       {player.current === null ? (
         <div>
-          <button
-            onClick={() => choosePlayerValue('X')}
-            value={"X"}
-            className="checkerValue"
-          >
-            X
-          </button>
-          <button
-            onClick={() => choosePlayerValue('O')}
-            value={"O"}
-            className="checkerValue"
-          >
-            O
-          </button>
+          <button onClick={() => choosePlayerValue('X')} value={"X"} className="checkerValue"> X </button>
+          <button onClick={() => choosePlayerValue('O')} value={"O"} className="checkerValue"> O </button>
         </div>
       ) : (
-        <></>
+        <>
+       <button onClick={resetGame}>Reinicia el juego </button>
+       <br />
+       <button onClick={gameStart}>Empieza la partida</button>
+       </>
       )}
       {/* recibe textos de diferentes componentes */}
       <h2>{text}</h2>
