@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import StartMatch from "../components/StartMatch";
 
 //falta coordinar el orden que se ejecutan los componentes de acuerdo a React
 //refactorizar el codigo a componentes
@@ -8,6 +9,7 @@ const TicTacToe = () => {
   const [text, setText] = useState("Escoge una ficha");
   const [turn, setTurn] = useState(null);
   const [winner, setWinner] = useState(null);
+
   const player = useRef(null);
   const computer = useRef(null);
 
@@ -27,20 +29,6 @@ const TicTacToe = () => {
       return (computer.current = "O");
     } else if (player.current === "O") {
       return (computer.current = "X");
-    }
-  };
-
-//se elige aleatoriamente quien va a empezar el juego
-  const gameStart = () => {
-    if (turn == null) {
-      let randomNumber = Math.floor(Math.random() * 2);
-      if (randomNumber === 0) {
-        setTurn("computadora");
-        setText("La computadora comienza la partida");
-      } else {
-        setTurn("player");
-        setText("El jugador comienza la partida");
-      }
     }
   };
 
@@ -154,7 +142,7 @@ useEffect(() => {
         <>
        <button onClick={resetGame}>Reinicia el juego </button>
        <br />
-       <button onClick={gameStart}>Empieza la partida</button>
+       <StartMatch turn={turn} setTurn={setTurn} setText={setText} />
        </>
       )}
       {/* recibe textos de diferentes componentes */}
