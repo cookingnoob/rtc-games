@@ -1,34 +1,29 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import StartMatch from "../components/StartMatch";
+import ChooseValue from "../components/ChooseValue";
 
 //falta coordinar el orden que se ejecutan los componentes de acuerdo a React
 //refactorizar el codigo a componentes
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
+  const [player, setPlayer] = useState(null);
+  const [computer, setComputer] = useState(null)
   const [text, setText] = useState("Escoge una ficha");
   const [turn, setTurn] = useState(null);
   const [winner, setWinner] = useState(null);
 
-  const player = useRef(null);
-  const computer = useRef(null);
-
-
-  //Cuando el usuario le da clic a X o O obtiene se le asigna un valor
-  const choosePlayerValue = (value) => {
-    player.current = value;
-    computerValue(player);
-    setText(`Has escogido ${value}`)
-  };
+  // const player = useRef(null);
+  // const computer = useRef(null);
 
 //la computadora toma el valor que el usuario no tomo
   const computerValue = (player) => {
-    if (player.current === null) {
+    if (player === null) {
       setText("no hay jugador");
-    } else if (player.current === "X") {
-      return (computer.current = "O");
-    } else if (player.current === "O") {
-      return (computer.current = "X");
+    } else if (player === "X") {
+      setComputer("O");
+    } else if (player === "O") {
+      setComputer("X");
     }
   };
 
@@ -40,15 +35,19 @@ const TicTacToe = () => {
     return emptyCells[Math.floor(Math.random() * emptyCells.length)];
   };
 
+
 //imprime el valor del jugador actual en el tablero
   const handleBoardInput = useCallback(
     (index, currentPlayer) => {
-      if (board[index] !== null) {
-        return;
-      } else if (player.current == null) {
+      if (player == null) {
         setText("no has escogido una ficha");
         return;
-      }
+      } else if(turn == null){
+        setText("Inicia la partida")
+        return
+      }else if (board[index] !== null) {
+        return;
+      } 
       const newBoard = [...board];
       newBoard[index] = currentPlayer;
       setBoard(newBoard);
@@ -120,8 +119,8 @@ useEffect(() => {
 
       const resetGame = () => {
           setBoard([null, null, null, null, null, null, null, null, null])
-          player.current = null;
-          computer.current = null;
+          setPlayer(null);
+          setComputer(null);
           setText('Escoge una ficha');
           setTurn(null);
           setWinner(null)
@@ -130,14 +129,8 @@ useEffect(() => {
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      {/* resetea todos los estados */}
-  
-      {/* el jugador escoge un || retorna el valor del jugador y de la computadora */}
-      {player.current === null ? (
-        <div>
-          <button onClick={() => choosePlayerValue('X')} value={"X"} className="checkerValue"> X </button>
-          <button onClick={() => choosePlayerValue('O')} value={"O"} className="checkerValue"> O </button>
-        </div>
+      {player === null ? (
+      <ChooseValue setPlayer={setPlayer} setText={setText}/>
       ) : (
         <>
        <button onClick={resetGame}>Reinicia el juego </button>
