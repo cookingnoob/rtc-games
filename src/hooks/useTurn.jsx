@@ -1,13 +1,11 @@
 
-// Turno del jugador actual
-// retorna si alguien gano o no
-
 const useTurn = () => {
-    const [turn, setTurn] = useState(null);
-    const [winner, setWinner] = useState(null);
-  
+    //Checa si alguien ya ganó o no
+    //checa si es valido el movimiento
+    //coloca el valor del jugador actual en 
+
   return (
-    {turn, winner}
+    {}
   )
 }
 
