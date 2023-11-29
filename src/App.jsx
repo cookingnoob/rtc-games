@@ -1,4 +1,5 @@
 import './App.css'
+import Hangman from './pages/Hangman'
 import TicTacToe from './pages/TicTacToe'
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
 
   return (
     <>
-    <TicTacToe />
+    {/* <TicTacToe /> */}
+    <Hangman />
     </>
   )
 }
