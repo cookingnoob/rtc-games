@@ -1,13 +1,29 @@
 import React, { useState } from 'react'
 
 const Hangman = () => {
-  const [words, setWords] = useState(['celular', 'spiderman', 'nintendo', 'teclado'])
-  
+  const [word, setWord] = useState('');
+  const [input, setInput] = useState('')
+  const listOfWords = ['celular', 'spiderman', 'nintendo', 'teclado']
 
- 
-    const randomNumber = Math.floor(Math.random() * words.length)
-    const getWord = words.filter((word, index) => index == randomNumber)
-    console.log(getWord)
+
+  //obtener la palabra que se va a adivinar
+    //no debe re renderizarse todo el tiempo 
+    //solo si ganaste o perdiste
+    
+    const randomNumber = Math.floor(Math.random() * listOfWords.length)
+    const getWord = `${listOfWords.filter((word, index) => index == randomNumber)}`;
+
+  //tratamiento de la palabra
+    //separarla en partes
+    //cambiar algunas letras por _ de forma aleatorea
+    //devolver la palabra a sus partes
+    //poner esta palabra en el texto que sale
+
+    const splitWord = getWord.split("");
+  
+    const handleInput = (e) => {
+      setInput(e.target.value)
+    }
 
     //lista de palabras en un estado
         //Se escoge aleatoreamente una palabra
@@ -19,10 +35,11 @@ const Hangman = () => {
   return (
     <>
     <h1>Ahorcado</h1>
-    <h2>{getWord}</h2>
+    <h2>{splitWord}</h2>
     <h3>❌ ❌ ❌ || ✅ ✅ ✅</h3>
     <h4>pista</h4>
-    <input type="text" placeholder='espacio para adivinar' />
+    <input type="text" placeholder='espacio para adivinar' onChange={handleInput}/>
+    <button>respuesta</button>
     </>
   )
 }
