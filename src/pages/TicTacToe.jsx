@@ -49,7 +49,6 @@ const computerValue = (player) => {
       } else if (board[index] !== null) {
         return;
       } else if(winner != null){
-        console.log('si funciona esta clausula')
         return
       }
 
@@ -59,13 +58,11 @@ const computerValue = (player) => {
 
      if (turn === 'computadora'){
         passTurnTo('player')
-        console.log(turn)
       } else if (turn === 'player'){
         passTurnTo('computadora')
-        console.log(turn)
       }
-      console.log(winner)
       checkWinner(newBoard);
+      checkTie(newBoard)
     }
   ,[winner, turn]);
 
@@ -87,11 +84,9 @@ const computerValue = (player) => {
     } else if (nextPlayer === "computadora") {
       setTurn("computadora");
       setText('Turno de la computadora')
-
     } else if (nextPlayer === "player") {
       setTurn("player");
       setText('Turno del player')
-   
     }
   };
 
@@ -103,13 +98,21 @@ const checkWinner = (board) =>  {
       if(board[a] != null){
         if(board[a] == board[b] && board[b] == board[c] && board[a] == board[c]){
           if(turn == 'computadora'){
-            setWinner(`🤖`);
+            setWinner('computadora')
+            setText(`Ganó la computadora!! 🤖`);
           } else if (turn == 'player'){
-            setWinner('🧘🏽')
-          }}}}
+            setWinner('jugador')
+            setText('Gano el jugador 🧘🏽')
+          }}
+        }
+      }
     )
   }
-
+const checkTie = (board) => {
+  if(board.every(cell => cell != null)){
+    setText('Empate')
+  }
+}
 //regresa todos los estados a su valor original
   const resetGame = () => {
     setBoard([null, null, null, null, null, null, null, null, null])
