@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 const Hangman = () => {
   const [word, setWord] = useState('');
@@ -6,20 +6,15 @@ const Hangman = () => {
   const listOfWords = ['celular', 'spiderman', 'nintendo', 'teclado']
 
 
-  //obtener la palabra que se va a adivinar
-    //no debe re renderizarse todo el tiempo 
-    //solo si ganaste o perdiste
-    
     const randomNumber = Math.floor(Math.random() * listOfWords.length)
-    const getWord = `${listOfWords.filter((word, index) => index == randomNumber)}`;
+    const getWord = useMemo(() =>{
+     const filterWord = `${listOfWords.filter((word, index) => index == randomNumber)}`;
+      const splitWord = filterWord.split("");
+      return splitWord
+    }, []);
+   
 
-  //tratamiento de la palabra
-    //separarla en partes
-    //cambiar algunas letras por _ de forma aleatorea
-    //devolver la palabra a sus partes
-    //poner esta palabra en el texto que sale
 
-    const splitWord = getWord.split("");
   
     const handleInput = (e) => {
       setInput(e.target.value)
@@ -35,7 +30,7 @@ const Hangman = () => {
   return (
     <>
     <h1>Ahorcado</h1>
-    <h2>{splitWord}</h2>
+    <h2>{getWord}</h2>
     <h3>❌ ❌ ❌ || ✅ ✅ ✅</h3>
     <h4>pista</h4>
     <input type="text" placeholder='espacio para adivinar' onChange={handleInput}/>
