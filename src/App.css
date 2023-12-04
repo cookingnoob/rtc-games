@@ -21,3 +21,6 @@
   background-color: whitesmoke;
   color: black ;
 }
+.inputContainer{
+  display: flex;
+}
