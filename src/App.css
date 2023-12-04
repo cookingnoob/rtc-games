@@ -24,3 +24,8 @@
 .inputContainer{
   display: flex;
 }
+
+/* -------------------HANGMAN */
+.wrongLetter{
+  background-color: red;
+}
