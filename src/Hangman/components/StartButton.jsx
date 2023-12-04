@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 const StartButton = ({setWordToGuess, wordToGuess, listOfWords}) => {
-    
-      const startGame = () => {
+
+    const startGame = () => {
         if(wordToGuess == ''){
           const randomNumber = Math.floor(Math.random() * listOfWords.length);
           const selectWord = listOfWords[randomNumber];
@@ -11,6 +11,7 @@ const StartButton = ({setWordToGuess, wordToGuess, listOfWords}) => {
           return
         }
       }
+
   return (
     <>
     <button onClick={startGame}>Empieza la Partida</button>

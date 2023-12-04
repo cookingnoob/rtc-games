@@ -1,18 +1,26 @@
 import{ useState } from 'react'
 import StartButton from './components/StartButton'
+import LetterButtons from './components/LetterButtons';
 
 const Hangman = () => {
-  const [wordToGuess, setWordToGuess] = useState('')
+  const [wordToGuess, setWordToGuess] = useState('');
+  const [wrongLetters, setWrongLetter] = useState();
   const listOfWords = ['celular', 'spiderman', 'nintendo', 'teclado', 'gimnasio', 'explorador', 'audifonos', 'paella', 'lentejas', 'bocina']
-
-  //setea el estado WordToGuess con una palabra aleatorea del array listOfWords
-
-//toma el valor WordToGuess y desaparece ciertos elementos
+//escoger una palabra random del array
 
   return (
     <>
-    {wordToGuess == '' ? <h1>Listo para jugar?</h1> : <h1>{wordToGuess}</h1>}
-    <StartButton wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords}/>
+    <h1>Hangman</h1>
+    {wordToGuess == '' ? 
+      <>
+      <h1>Listo para jugar?</h1> 
+      <StartButton wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords}/>
+      </>
+    : 
+      <>
+    <h1>{wordToGuess}</h1>
+    <LetterButtons wordToGuess={wordToGuess}/>
+      </> }
     
     </>
   )
