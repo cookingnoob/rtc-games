@@ -1,13 +1,11 @@
-import React, { useMemo, useState } from 'react'
-
-const StartButton = ({setWordToGuess, wordToGuess, listOfWords, setStrike}) => {
+const StartButton = ({setWordToGuess, listOfWords, setStrike, setLetterButtons}) => {
 
     const startGame = () => {
           const randomNumber = Math.floor(Math.random() * listOfWords.length);
-          const selectWord = listOfWords[randomNumber];
-          setWordToGuess(selectWord);
+          const selectedWord = listOfWords[randomNumber];
+          setWordToGuess({selectedWord});
           setStrike('');
-          console.log(selectWord)
+          setLetterButtons(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'])
       }
 
   return (

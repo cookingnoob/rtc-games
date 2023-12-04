@@ -3,30 +3,46 @@ import StartButton from './components/StartButton'
 import LetterButtons from './components/LetterButtons';
 
 const Hangman = () => {
-  const [wordToGuess, setWordToGuess] = useState('');
-  const [wrongLetters, setWrongLetter] = useState();
+  const [wordToGuess, setWordToGuess] = useState({word: ''});
   const [strike, setStrike] = useState('')
-  const listOfWords = ['celular', 'spiderman', 'nintendo', 'teclado', 'gimnasio', 'explorador', 'audifonos', 'paella', 'lentejas', 'bocina']
-//escoger una palabra random del array
+  const [letterButtons, setLetterButtons] = useState(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'])
 
+  //separa la palabra del objeto en un array, cambia aleatoreamente las letras por '_' y retorna la nueva palabra
+const hideLetters = (word) => {
+  const lettersOfTheWord = word.split('');
+  const changeLetters = lettersOfTheWord.map ((letter) => {
+    const randomNumber = Math.floor(Math.random() * 2);
+    if(randomNumber < 1){
+      return letter
+    } else {
+      return '_'
+    }
+  })
+  const guessingWord = changeLetters.join('');
+  return guessingWord
+}
+
+const listOfWords = [{word:'celular', wordForGuessing: hideLetters('celular')}, {word:'spiderman', wordForGuessing: hideLetters('spiderman')}, {word:'nintendo', wordForGuessing: hideLetters('nintendo')}, {word: 'teclado', wordForGuessing: hideLetters('teclado')}, {word:'gimnasio', wordForGuessing: hideLetters('gimnasio')}, {word: 'explorador', wordForGuessing: hideLetters('explorador')}, {word:'audifonos', wordForGuessing: hideLetters('audifonos')}, {word: 'paella', wordForGuessing: hideLetters('paella')}, {word: 'lentejas', wordForGuessing: hideLetters('lentejas')}, {word:'bocina', wordForGuessing: hideLetters('bocina')}]
+
+console.log(wordToGuess)
   return (
     <>
     <h1>Hangman</h1>
     {strike === '❌❌❌❌❌' ? <> 
     <h1>Perdiste</h1> 
-    <StartButton wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike}/>
+    <StartButton wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
     </> : 
     <>
     {strike}
-    {wordToGuess == '' ? 
+    {wordToGuess.word == '' ? 
       <>
       <h1>Listo para jugar?</h1> 
-      <StartButton wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike}/>
+      <StartButton wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons} />
       </>
     : 
       <>
-    <h1>{wordToGuess}</h1>
-    <LetterButtons wordToGuess={wordToGuess} setStrike={setStrike} strike={strike}/>
+    <h1>{wordToGuess.selectedWord.word}</h1>
+    <LetterButtons wordToGuess={wordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
       </> }
     </>}
 
@@ -36,3 +52,5 @@ const Hangman = () => {
 }
 
 export default Hangman
+
+// {wordToGuess.selectedWord.word == '' ? <p>empezar partida</p> : <h1>{wordToGuess.selectedWord.word}</h1>}
