@@ -1,5 +1,6 @@
 import './App.css'
-import Hangman from './pages/Hangman'
+import Hangman from './Hangman/Hangman'
+
 import TicTacToe from './pages/TicTacToe'
 
 function App() {
