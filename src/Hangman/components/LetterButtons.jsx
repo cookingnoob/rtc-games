@@ -5,7 +5,7 @@ const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetter
 
 
     const checkLetter = (e) => {
-      if (wordToGuess.selectedWord.word.includes(e.target.value)){
+      if (wordToGuess.includes(e.target.value)){
         correctLetter(e)
         } else {
         wrongLetter(e)
@@ -17,12 +17,15 @@ const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetter
     //falta que solo consiga ese numero y quite los demas elementos del array
     //cambiar ese indice en el otro elemento del objeto
     const correctLetter = (e) => {
-        const originalWordArray = wordToGuess.selectedWord.word.split('');
+        const originalWordArray = "wordToGuess".split('');
         const indexOfCorrectLetter = originalWordArray.map((letter, index) => {
             if(letter == e.target.value){
                 return index
             }
         }).filter((index) => {
+          if(index == 0){
+            return 0
+          }
           if(index != null) {
             return index
           }
