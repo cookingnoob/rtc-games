@@ -27,24 +27,34 @@ const listOfWords = [{word:'celular', wordForGuessing: hideLetters('celular')}, 
   return (
     <>
     <h1>Hangman</h1>
-    {strike === '❌❌❌❌❌' ? <> 
-    <h1>Perdiste 😰 quieres volver a intentar?</h1> 
-    <StartButton setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
-    </> : 
-    <>
-    {strike}
-    {wordToGuess.word == '' ? 
-      <>
-      <h2>Listo para jugar?🤓</h2> 
-      <StartButton setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons} />
-      </>
+    {strike === '❌❌❌❌❌❌' ? 
+      <> 
+      <h1>Perdiste 😰 quieres volver a intentar?</h1> 
+      <StartButton setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
+      </> 
     : 
       <>
-    <h1>{wordToGuess.selectedWord.wordForGuessing}</h1>
-    <LetterButtons wordToGuess={wordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
-      </> }
-    </>}
+      {strike}
+      {wordToGuess.word == '' ? 
+        <>
+        <h2>Listo para jugar?🤓</h2> 
+        <StartButton setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons} />
+        </>
+      : 
+        <>
+      <h1>{wordToGuess.selectedWord.wordForGuessing}</h1>
+      <LetterButtons wordToGuess={wordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
+        </> }
+      </>
+    }
 
+    {strike === '❌❌❌' || strike === '❌❌❌❌' || strike === '❌❌❌❌❌'   ?
+          <>
+          <p>Pistas: </p>
+          </> : 
+          <>
+          </>
+    }
     
     </>
   )
