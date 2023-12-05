@@ -1,8 +1,9 @@
 import{ useRef, useState } from 'react'
 import StartButton from './components/StartButton'
-import LetterButtons from './components/LetterButtons';
 import useGuessWord from './hooks/useGuessWord';
 import Clues from './components/Clues';
+import StartMatch from './components/StartMatch';
+import PlayingWindow from './components/PlayingWindow';
 
 const Hangman = () => {
   const [wordToGuess, setWordToGuess] = useState('');
@@ -15,7 +16,7 @@ const Hangman = () => {
   return (
     <>
     <h1>Hangman</h1>
-    <h1>{wordToGuess}</h1>
+    
   
     {strike === '❌❌❌❌❌❌' ? 
       <> 
@@ -24,16 +25,13 @@ const Hangman = () => {
       </> 
     : 
       <>
-      {strike}
       {wordToGuess == '' ? 
         <>
-        <h2>Listo para jugar?🤓</h2> 
-        <StartButton setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons} />
+        <StartMatch setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
         </>
       : 
         <>
-      <h1>{getTreatedWord}</h1>
-      <LetterButtons wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
+     <PlayingWindow getTreatedWord={getTreatedWord}wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
         </> }
       </>
     }
