@@ -1,8 +1,9 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-const HideLetters = ({wordToGuess}) => {
+const HideLetters = ({wordToGuess, setPlayerString, playerString}) => {
+   
 
-    const hideLetters = useMemo(() => {
+    useEffect(() => {
         if(wordToGuess === undefined){
             return
         }
@@ -11,15 +12,14 @@ const HideLetters = ({wordToGuess}) => {
             const randomNumber = Math.floor(Math.random() * 2);
            return randomNumber < 1 ? letter : '_'
         })
-        return changeLetters.join('');
-        
+         setPlayerString(changeLetters.join(''));
    },[wordToGuess])
 
   return (
     <>
     {wordToGuess == undefined ?
     <></> :
-    <h1>{hideLetters}</h1> 
+    <h1>{playerString}</h1> 
     }
     </>
   )
