@@ -11,7 +11,7 @@ const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetter
     }
 
     const correctLetter = (e) => {
-        const originalWordArray = "wordToGuess".split('');
+        const originalWordArray = wordToGuess.split('');
         const indexOfCorrectLetter = originalWordArray.map((letter, index) => {
             if(letter == e.target.value){
                 return index
@@ -36,7 +36,7 @@ const wrongLetter = (e) => {
   return (
     <>
       {letterButtons.map((letter, index) => {
-    return <button key={index} value={letter} onClick={checkLetter}>{letter}</button>
+        return <button key={index} value={letter} onClick={checkLetter}>{letter}</button>
      })}
     </>
   )
