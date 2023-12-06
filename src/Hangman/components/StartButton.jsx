@@ -1,4 +1,4 @@
-import useGuessWord from "../hooks/useGuessWord";
+
 
 const StartButton = ({setWordToGuess, listOfWords, setStrike, setLetterButtons}) => {
 

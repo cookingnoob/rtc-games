@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 
 const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetterButtons}) => {
     
-
-
     const checkLetter = (e) => {
       if (wordToGuess.includes(e.target.value)){
         correctLetter(e)
@@ -12,10 +10,6 @@ const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetter
         } 
     }
 
-//crea un teclado para ver si las letras estan dentro de la palabra a adivinar
-    //ya consigue el numero de indice
-    //falta que solo consiga ese numero y quite los demas elementos del array
-    //cambiar ese indice en el otro elemento del objeto
     const correctLetter = (e) => {
         const originalWordArray = "wordToGuess".split('');
         const indexOfCorrectLetter = originalWordArray.map((letter, index) => {
