@@ -26,7 +26,7 @@ const Hangman = () => {
         </>
       : 
         <>
-        <PlayingWindow playerString={playerString} setPlayerString={setPlayerString} wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
+        <PlayingWindow playerString={playerString} setPlayerString={setPlayerString} wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons} listOfWords={listOfWords}/>
         </> }
       </>
     }
