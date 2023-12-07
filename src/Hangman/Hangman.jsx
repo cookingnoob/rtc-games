@@ -2,6 +2,7 @@ import{ useState } from 'react'
 import StartMatch from './components/StartMatch';
 import PlayingWindow from './components/PlayingWindow';
 import YouLostWindow from './components/YouLostWindow';
+import WinWindow from './components/WinWindow';
 
 const Hangman = () => {
   const [wordToGuess, setWordToGuess] = useState('');
@@ -26,7 +27,12 @@ const Hangman = () => {
         </>
       : 
         <>
-        <PlayingWindow playerString={playerString} setPlayerString={setPlayerString} wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons} listOfWords={listOfWords}/>
+        {playerString === wordToGuess ? 
+        <WinWindow strike={strike} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
+        :
+        <PlayingWindow playerString={playerString} setPlayerString={setPlayerString} wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} setStrike={setStrike} strike={strike} setLetterButtons={setLetterButtons} letterButtons={letterButtons}/>
+        }
+        
         </> }
       </>
     }
