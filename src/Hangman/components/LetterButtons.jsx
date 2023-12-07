@@ -1,37 +1,46 @@
 import React, { useState } from 'react'
 
-const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetterButtons}) => {
+const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetterButtons, playerString, setPlayerString}) => {
     
     const checkLetter = (e) => {
       if (wordToGuess.includes(e.target.value)){
-        correctLetter(e)
+        const letter = e.target.value;
+        const index = getIndex(e);
+        const updatedGuessWord = updateGuessWord(letter, index)
+        setPlayerString(updatedGuessWord)
         } else {
-        wrongLetter(e)
+          setStrikeAndRemoveLetter(e)
         } 
     }
+//no funciona bien. O crea muchos arrays o retorna undefined
+    const updateGuessWord = (letter, index) => {
+      const separatePlayerString = playerString.split('');
+      const newArray = index.map(index => {
+        separatePlayerString[index] = letter;
+        return separatePlayerString
+     })
+     const newWord = separatePlayerString.join('')
+     return newWord
+    }
+    
 
-    const correctLetter = (e) => {
+    const getIndex = (e) => {
         const originalWordArray = wordToGuess.split('');
-        const indexOfCorrectLetter = originalWordArray.map((letter, index) => {
-            if(letter == e.target.value){
-                return index
+        const indexOfCorrectLetter = []
+          originalWordArray.forEach((letter, index) => {
+            if(letter === e.target.value){
+              indexOfCorrectLetter.push(index)
             }
-        }).filter((index) => {
-          if(index == 0){
-            return 0
-          }
-          if(index != null) {
-            return index
-          }
-        })
-        console.log(indexOfCorrectLetter)
+          })
+        return indexOfCorrectLetter
     }
 
-const wrongLetter = (e) => {
+const setStrikeAndRemoveLetter = (e) => {
     const newKeyboard = letterButtons.filter((button) => button != e.target.value)
             setLetterButtons(newKeyboard)
             setStrike(strike + '❌')
 }
+
 
   return (
     <>
