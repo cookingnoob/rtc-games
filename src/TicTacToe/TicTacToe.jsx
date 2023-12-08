@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import ChooseValue from "./components/ChooseValue";
-
+import ResetButton from "./components/ResetButton";
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
@@ -17,7 +17,6 @@ const TicTacToe = () => {
   
   const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],];
 
-  //Permite al jugador escoger un valor de las casillas
 
   
   //La computadora escoge el valor opuesto al del jugador
@@ -112,14 +111,7 @@ const checkTie = (board) => {
   }
 }
 //regresa todos los estados a su valor original
-  const resetGame = () => {
-    setBoard([null, null, null, null, null, null, null, null, null])
-    setPlayer(null);
-    setComputer(null);
-    setText('Escoge una ficha');
-    setTurn(null);
-    setWinner(null)
-  }
+
 
 //inicia la partida dando un turno aleatoreo al jugador o computadora
   const gameStart = () => {
@@ -145,7 +137,7 @@ const checkTie = (board) => {
         </>
       ) : (
         <>
-       <button onClick={resetGame}>Reinicia el juego </button>
+       <ResetButton setBoard={setBoard} setPlayer={setPlayer} setComputer={setComputer} setText={setText} setTurn={setTurn} setWinner={setWinner} />
        <br />
        <button onClick={gameStart}>Empieza la partida</button>
        </>
