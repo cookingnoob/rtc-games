@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import ChooseValue from "./components/ChooseValue";
 
 
 const TicTacToe = () => {
@@ -17,11 +18,7 @@ const TicTacToe = () => {
   const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],];
 
   //Permite al jugador escoger un valor de las casillas
-  const choosePlayerValue = (value) => {
-    setPlayer(value);
-    computerValue(value)
-    setText(`Has escogido ${value}`)
-  };
+
   
   //La computadora escoge el valor opuesto al del jugador
 const computerValue = (player) => {
@@ -144,8 +141,7 @@ const checkTie = (board) => {
       <h1>Tic Tac Toe</h1>
       {player === null ? (
         <>
-        <button onClick={() => choosePlayerValue('X')} value={"X"} className="checkerValue"> X </button>
-        <button onClick={() => choosePlayerValue('O')} value={"O"} className="checkerValue"> O </button>
+    <ChooseValue setText={setText} setPlayer={setPlayer} computerValue={computerValue}/>
         </>
       ) : (
         <>

@@ -29,3 +29,15 @@
 .wrongLetter{
   background-color: red;
 }
+
+/* -------------------SUDOKU */
+.sudokuBoard{
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 10px;
+}
+.sudokuCell{
+  height: 50px;
+  width: 50px;
+}

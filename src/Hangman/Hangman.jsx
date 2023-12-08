@@ -17,7 +17,7 @@ const Hangman = () => {
   
     {strike === '❌❌❌❌❌❌' ? 
       <> 
-    <YouLostWindow strike={strike} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
+    <YouLostWindow strike={strike} wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
       </> 
     : 
       <>
