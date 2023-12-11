@@ -35,15 +35,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 .sudokuGrid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  border: 1px solid black;
+  gap: 8px;
 }
 .sudokuCell{
   height: 50px;
   width: 50px;
+  border: 1px solid black;
 }

@@ -8,8 +8,9 @@ const Sodoku = () => {
 
 useEffect(() => {
   const newBoard = makepuzzle();
-  const gridArrays = [[newBoard.slice(0,8)], [newBoard.slice(9,17)],[newBoard.slice(18,26)], [newBoard.slice(27,35)],[newBoard.slice(36,44)], [newBoard.slice(45,53)],[newBoard.slice(54,62)], [newBoard.slice(63,71)],[newBoard.slice(72,80)]];
-  setSudokuBoard(newBoard);
+  const gridArrays = [newBoard.slice(0,9), newBoard.slice(9,18),newBoard.slice(18,27), newBoard.slice(27,36),newBoard.slice(36,45), newBoard.slice(45,54),newBoard.slice(54,63), newBoard.slice(63,72),newBoard.slice(72,81)];
+  console.log(gridArrays)
+  setSudokuBoard(gridArrays);
 }, []);
 
 
