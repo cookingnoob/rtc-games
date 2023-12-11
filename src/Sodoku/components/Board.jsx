@@ -1,5 +1,9 @@
 const Board = ({sudokuBoard }) => {
 
+const handleSudokuClick = (gridIndex, cellIndex) => {
+  console.log(`grid: ${gridIndex} cell: ${cellIndex}`)
+  console.log(sudokuBoard[gridIndex][cellIndex])
+}
 
 
 //tengo que cambiar el valor del array original
@@ -10,7 +14,7 @@ const Board = ({sudokuBoard }) => {
           
           {grid.map((cell, cellIndex) => {
             const uniqueIndex = `grid-${gridIndex}-cell${cellIndex}`
-            return <button key={uniqueIndex} className='sudokuCell' value={cell} >{cell}</button>
+            return <button key={uniqueIndex} className='sudokuCell' value={cell} onClick={() => handleSudokuClick(gridIndex, cellIndex)}>{cell}</button>
           })}
       </div>
     })}
@@ -19,3 +23,4 @@ const Board = ({sudokuBoard }) => {
 }
 
 export default Board
+//sudokuBoard[0][0]
