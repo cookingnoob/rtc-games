@@ -33,9 +33,15 @@
 /* -------------------SUDOKU */
 .sudokuBoard{
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 10px;
+}
+.sudokuGrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px solid black;
 }
 .sudokuCell{
   height: 50px;

@@ -88,7 +88,6 @@ const computerValue = (player) => {
   };
 
 //Checa si alguien gano
-
 const checkWinner = (board) =>  {
   winningCombinations.forEach(combination => {
       const [a, b, c] = combination;
@@ -105,12 +104,12 @@ const checkWinner = (board) =>  {
       }
     )
   }
+  
 const checkTie = (board) => {
   if(board.every(cell => cell != null)){
     setText('Empate')
   }
 }
-//regresa todos los estados a su valor original
 
 
 //inicia la partida dando un turno aleatoreo al jugador o computadora
