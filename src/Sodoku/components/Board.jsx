@@ -1,11 +1,10 @@
-const Board = ({sudokuBoard, setGrid}) => {
+const Board = ({sudokuBoard, setGrid, setCellIndex}) => {
 
 const handleSudokuClick = (gridIndex, cellIndex) => {
   setGrid(gridIndex)
+  setCellIndex(cellIndex)
 }
 
-
-//tengo que cambiar el valor del array original
   return (
    <div className="sudokuBoard">
     {sudokuBoard.map((grid, gridIndex) => {
@@ -22,4 +21,3 @@ const handleSudokuClick = (gridIndex, cellIndex) => {
 }
 
 export default Board
-//sudokuBoard[0][0]
