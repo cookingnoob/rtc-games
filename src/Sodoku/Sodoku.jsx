@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import sudoku, { makepuzzle, solvepuzzle } from 'sudoku';
-import Board from './components/Board';
+
 import StartSudoku from './components/StartSudoku';
+import PlayingSudokuWindow from './components/PlayingSudokuWindow';
 
 const Sodoku = () => {
 
   const [sudokuBoard, setSudokuBoard] = useState(null);
-
 
 
   return (
@@ -17,7 +17,7 @@ const Sodoku = () => {
   <StartSudoku makepuzzle={makepuzzle} setSudokuBoard={setSudokuBoard}/>
   </> 
   : 
-  <Board sudokuBoard={sudokuBoard}/>
+  <PlayingSudokuWindow sudokuBoard={sudokuBoard}/>
   }
     </>
   )

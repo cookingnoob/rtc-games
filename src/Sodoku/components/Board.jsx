@@ -1,8 +1,7 @@
-const Board = ({sudokuBoard }) => {
+const Board = ({sudokuBoard, setGrid}) => {
 
 const handleSudokuClick = (gridIndex, cellIndex) => {
-  console.log(`grid: ${gridIndex} cell: ${cellIndex}`)
-  console.log(sudokuBoard[gridIndex][cellIndex])
+  setGrid(gridIndex)
 }
 
 

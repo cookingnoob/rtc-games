@@ -48,3 +48,14 @@
   width: 50px;
   border: 1px solid black;
 }
+.numberButtonsContainer{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  gap: 5px;
+}
+.numberButtons{
+  height: 80px;
+}
