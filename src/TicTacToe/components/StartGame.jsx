@@ -1,8 +1,8 @@
 import React from 'react'
 
-const StartGame = ({turn,setTurn, setText}) => {
-  const gameStart = () => {
+const StartGame = ({turn,setTurn, setText, player}) => {
 
+  const gameStart = () => {
       let randomNumber = Math.floor(Math.random() * 2);
         if (randomNumber === 0) {
           setTurn("computadora");
@@ -15,7 +15,8 @@ const StartGame = ({turn,setTurn, setText}) => {
     };
   return (
     <>
-    <button onClick={gameStart}>Empieza la partida</button>
+    {turn == null && player != null ? <button onClick={gameStart}>Empieza la partida</button> : <></>}
+    
     </>
   )
 }

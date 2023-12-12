@@ -5,6 +5,7 @@ const AddValidNumber = ({copyOfSudoku, numberToAdd,sudokuBoard,grid,cellIndex,se
    const handleSubmit = () => {
     if(numberToAdd === null){
         setText('No has seleccionado un número!')
+        return
     } else if(copyOfSudoku[grid][cellIndex] !== null){
         setText('No se pueden cambiar los números originales')
         return
@@ -14,19 +15,18 @@ const AddValidNumber = ({copyOfSudoku, numberToAdd,sudokuBoard,grid,cellIndex,se
     }
     }
 
-const addValueToBoard = () => {
-    const arrayToBeChanged = [...sudokuBoard]
-    arrayToBeChanged[grid][cellIndex] = numberToAdd
-    setSudokuBoard(arrayToBeChanged)
-    
-}
+    const addValueToBoard = () => {
+        const arrayToBeChanged = [...sudokuBoard]
+        arrayToBeChanged[grid][cellIndex] = numberToAdd
+        setSudokuBoard(arrayToBeChanged)
+    }
 
-const resetValues = () => {
-    setNumberToAdd(null);
-    setGrid(null)
-    setCellIndex(null)
-    setText('Selecciona una casilla')
-}
+    const resetValues = () => {
+        setNumberToAdd(null);
+        setGrid(null)
+        setCellIndex(null)
+        setText('Selecciona una casilla')
+    }
 
   return (
     <button onClick={handleSubmit}>Colocar numero</button>
@@ -34,5 +34,3 @@ const resetValues = () => {
 }
 
 export default AddValidNumber
-
-//if(copyOfSudoku[grid][cellIndex] !== null && )

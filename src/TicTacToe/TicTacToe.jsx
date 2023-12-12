@@ -4,6 +4,7 @@ import ResetButton from "./components/ResetButton";
 import Computer from "./components/Computer";
 import StartGame from "./components/StartGame";
 import Board from "./components/Board";
+import PlayingWindow from "./components/PlayingWindow";
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
@@ -88,20 +89,9 @@ const checkTie = (board) => {
     <>
       <h1>Tic Tac Toe</h1>
       <h2>{text}</h2>
-      {player === null ? 
-     <ChooseValue setText={setText} setPlayer={setPlayer} />
-       : 
-        <>
-      <StartGame turn={turn} setTurn={setTurn}  setText={setText}/>
-       </>
-      }
-      {turn === null ? <></> : 
-      <>
-      <Board board={board} handleBoardInput={handleBoardInput} player={player}/> 
-      <Computer setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn}/>
-      <ResetButton setBoard={setBoard} setPlayer={setPlayer}  setText={setText} setComputer={setComputer} setTurn={setTurn} setWinner={setWinner} />
-      </>}
-
+     <ChooseValue setText={setText} setPlayer={setPlayer} player={player}/>
+     <StartGame turn={turn} setTurn={setTurn}  setText={setText} player={player}/>
+      <PlayingWindow setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn} setBoard={setBoard} setPlayer={setPlayer}  setText={setText}  setTurn={setTurn} setWinner={setWinner} />
     </>
   );
 };
