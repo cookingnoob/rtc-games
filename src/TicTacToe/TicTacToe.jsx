@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import ChooseValue from "./components/ChooseValue";
 import ResetButton from "./components/ResetButton";
 import Computer from "./components/Computer";
+import StartGame from "./components/StartGame";
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
@@ -84,18 +85,7 @@ const checkTie = (board) => {
 
 
 //inicia la partida dando un turno aleatoreo al jugador o computadora
-  const gameStart = () => {
-    if (turn == null) {
-      let randomNumber = Math.floor(Math.random() * 2);
-        if (randomNumber === 0) {
-          setTurn("computadora");
-          setText("La computadora comienza la partida");
-        } else {
-          setTurn("player");
-          setText("El jugador comienza la partida");
-            }
-          }
-    };
+
   
 
   return (
@@ -105,10 +95,10 @@ const checkTie = (board) => {
     <ChooseValue setText={setText} setPlayer={setPlayer} />
        : 
         <>
-        <Computer setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn}/>
+      <Computer setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn}/>
        <ResetButton setBoard={setBoard} setPlayer={setPlayer}  setText={setText} setComputer={setComputer} setTurn={setTurn} setWinner={setWinner} />
        <br />
-       <button onClick={gameStart}>Empieza la partida</button>
+      <StartGame turn={turn} setTurn={setTurn}  setText={setText}/>
        </>
       }
       <h2>{text}</h2>
