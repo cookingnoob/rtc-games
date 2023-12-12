@@ -8,6 +8,7 @@ import RestartSudoku from './components/RestartSudoku';
 const Sodoku = () => {
 
   const [sudokuBoard, setSudokuBoard] = useState(null);
+  const [copyOfSudoku, setCopyOfSudoku] = useState(null)
   const [text, setText] = useState('Empieza la partida')
 
   return (
@@ -15,9 +16,9 @@ const Sodoku = () => {
     <h1>Sudoku</h1>
     <h2>{text}</h2>
   {sudokuBoard == null ? 
-  <StartSudoku makepuzzle={makepuzzle} setSudokuBoard={setSudokuBoard} setText={setText} buttonName={'inicia la partida'}/>
+  <StartSudoku makepuzzle={makepuzzle} copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} setText={setText} buttonName={'inicia la partida'}/>
   : 
-  <PlayingSudokuWindow sudokuBoard={sudokuBoard} setText={setText} setSudokuBoard={setSudokuBoard} makepuzzle={makepuzzle}/>
+  <PlayingSudokuWindow sudokuBoard={sudokuBoard} copyOfSudoku={copyOfSudoku} setText={setText} setCopyOfSudoku={setCopyOfSudoku} setSudokuBoard={setSudokuBoard} makepuzzle={makepuzzle}/>
   }
     </>
   )

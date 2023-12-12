@@ -1,16 +1,24 @@
 import React from 'react'
 
-const AddValidNumber = ({numberToAdd,sudokuBoard,grid,cellIndex,setSudokuBoard,setNumberToAdd,setGrid,setCellIndex, setText }) => {
+const AddValidNumber = ({copyOfSudoku, numberToAdd,sudokuBoard,grid,cellIndex,setSudokuBoard,setNumberToAdd,setGrid,setCellIndex, setText }) => {
 
    const handleSubmit = () => {
-    addValueToBoard()
-    resetValues()
+    if(numberToAdd === null){
+        setText('No has seleccionado un número!')
+    } else if(copyOfSudoku[grid][cellIndex] !== null){
+        setText('No se pueden cambiar los números originales')
+        return
+    }else{
+        addValueToBoard()
+        resetValues()
+    }
     }
 
 const addValueToBoard = () => {
     const arrayToBeChanged = [...sudokuBoard]
     arrayToBeChanged[grid][cellIndex] = numberToAdd
     setSudokuBoard(arrayToBeChanged)
+    
 }
 
 const resetValues = () => {
@@ -26,3 +34,5 @@ const resetValues = () => {
 }
 
 export default AddValidNumber
+
+//if(copyOfSudoku[grid][cellIndex] !== null && )

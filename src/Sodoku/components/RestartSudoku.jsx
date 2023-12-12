@@ -1,10 +1,9 @@
 import React from 'react'
 
-const RestartSudoku = ({originalSudoku, setSudokuBoard}) => {
+const RestartSudoku = ({copyOfSudoku,setSudokuBoard }) => {
 
     const handleRestart = () => {
-        setSudokuBoard(originalSudoku)
-   
+    setSudokuBoard(copyOfSudoku)
     }
 
   return (
