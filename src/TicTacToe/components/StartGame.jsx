@@ -2,7 +2,7 @@ import React from 'react'
 
 const StartGame = ({turn,setTurn, setText}) => {
   const gameStart = () => {
-    if (turn == null) {
+
       let randomNumber = Math.floor(Math.random() * 2);
         if (randomNumber === 0) {
           setTurn("computadora");
@@ -11,7 +11,7 @@ const StartGame = ({turn,setTurn, setText}) => {
           setTurn("player");
           setText("El jugador comienza la partida");
             }
-          }
+
     };
   return (
     <>

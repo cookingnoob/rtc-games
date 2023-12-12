@@ -3,6 +3,7 @@ import ChooseValue from "./components/ChooseValue";
 import ResetButton from "./components/ResetButton";
 import Computer from "./components/Computer";
 import StartGame from "./components/StartGame";
+import Board from "./components/Board";
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
@@ -83,11 +84,6 @@ const checkTie = (board) => {
   }
 }
 
-
-//inicia la partida dando un turno aleatoreo al jugador o computadora
-
-  
-
   return (
     <>
       <h1>Tic Tac Toe</h1>
@@ -102,15 +98,8 @@ const checkTie = (board) => {
        </>
       }
       <h2>{text}</h2>
-      {winner === null ? <></> : <p>ganó {winner}</p>}
       <br />
-      <div className="board">
-        {board.map((cell, index) => {
-          return (
-            <button key={index} onClick={() => { handleBoardInput(index, player);}} value={cell} className="cell">{cell}</button>
-          );
-        })}
-      </div>
+   <Board board={board} handleBoardInput={handleBoardInput} player={player}/>
     </>
   );
 };
