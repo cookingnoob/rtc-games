@@ -5,7 +5,6 @@ const DeleteButton = ({grid, cellIndex, sudokuBoard, setSudokuBoard}) => {
             const arrayToBeChanged = [...sudokuBoard]
             arrayToBeChanged[grid][cellIndex] = null
             setSudokuBoard(arrayToBeChanged)
-            console.log(sudokuBoard)
     }
   return (
     <button onClick={handleDelete}>Borrar</button>

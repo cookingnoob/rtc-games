@@ -1,9 +1,8 @@
 import React from 'react'
 
-const ChooseValue = ({setPlayer, computerValue, setText}) => {
+const ChooseValue = ({setPlayer, setText}) => {
     const choosePlayerValue = (value) => {
         setPlayer(value);
-        computerValue(value)
         setText(`Has escogido ${value}`)
       };
 

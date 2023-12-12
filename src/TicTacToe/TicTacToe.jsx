@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import ChooseValue from "./components/ChooseValue";
 import ResetButton from "./components/ResetButton";
+import Computer from "./components/Computer";
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
@@ -17,26 +18,6 @@ const TicTacToe = () => {
   
   const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],];
 
-
-  
-  //La computadora escoge el valor opuesto al del jugador
-const computerValue = (player) => {
-  if (player === "X"){
-    setComputer("O");
-  } else if (player === "O") {
-    setComputer("X");
-  }
-};
-
-//busca casillas disponibles y escoge una al azar
-  const chooseFreeSpace = (board) => {
-    const emptyCells = board
-      .map((cell, index) => (cell == null ? index : null))
-      .filter((index) => index !== null);
-    return emptyCells[Math.floor(Math.random() * emptyCells.length)];
-  };
-
-//checa si se puede colocar el valor dentro de una casilla y lo cocola y cambia el turno
 
   const handleBoardInput = useCallback(
     (index, currentPlayer) => {
@@ -63,17 +44,7 @@ const computerValue = (player) => {
     }
   ,[winner, turn]);
 
-  //permite que la computadora pueda poner un valor
-  useEffect(() => {
-    if(turn === 'computadora' && winner == null){
-      setTimeout(() => {
-          const freeIndex = chooseFreeSpace(board);
-          handleBoardInput(freeIndex, computer);
-      }, 1000);
-    }
-  }, [winner, turn])
-
-
+ 
 //cambia el estado de turno para saber quien esta jugando
   const passTurnTo = (nextPlayer) => {
     if (nextPlayer === null) {
@@ -130,17 +101,16 @@ const checkTie = (board) => {
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      {player === null ? (
+      {player === null ? 
+    <ChooseValue setText={setText} setPlayer={setPlayer} />
+       : 
         <>
-    <ChooseValue setText={setText} setPlayer={setPlayer} computerValue={computerValue}/>
-        </>
-      ) : (
-        <>
-       <ResetButton setBoard={setBoard} setPlayer={setPlayer} setComputer={setComputer} setText={setText} setTurn={setTurn} setWinner={setWinner} />
+        <Computer setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn}/>
+       <ResetButton setBoard={setBoard} setPlayer={setPlayer}  setText={setText} setComputer={setComputer} setTurn={setTurn} setWinner={setWinner} />
        <br />
        <button onClick={gameStart}>Empieza la partida</button>
        </>
-      )}
+      }
       <h2>{text}</h2>
       {winner === null ? <></> : <p>ganó {winner}</p>}
       <br />
