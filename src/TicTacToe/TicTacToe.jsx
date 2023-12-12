@@ -87,19 +87,21 @@ const checkTie = (board) => {
   return (
     <>
       <h1>Tic Tac Toe</h1>
+      <h2>{text}</h2>
       {player === null ? 
-    <ChooseValue setText={setText} setPlayer={setPlayer} />
+     <ChooseValue setText={setText} setPlayer={setPlayer} />
        : 
         <>
-      <Computer setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn}/>
-       <ResetButton setBoard={setBoard} setPlayer={setPlayer}  setText={setText} setComputer={setComputer} setTurn={setTurn} setWinner={setWinner} />
-       <br />
       <StartGame turn={turn} setTurn={setTurn}  setText={setText}/>
        </>
       }
-      <h2>{text}</h2>
-      <br />
-   <Board board={board} handleBoardInput={handleBoardInput} player={player}/>
+      {turn === null ? <></> : 
+      <>
+      <Board board={board} handleBoardInput={handleBoardInput} player={player}/> 
+      <Computer setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn}/>
+      <ResetButton setBoard={setBoard} setPlayer={setPlayer}  setText={setText} setComputer={setComputer} setTurn={setTurn} setWinner={setWinner} />
+      </>}
+
     </>
   );
 };
