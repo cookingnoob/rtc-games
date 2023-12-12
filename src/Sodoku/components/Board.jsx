@@ -1,8 +1,9 @@
-const Board = ({sudokuBoard, setGrid, setCellIndex}) => {
+const Board = ({sudokuBoard, setGrid, setCellIndex, setText}) => {
 
 const handleSudokuClick = (gridIndex, cellIndex) => {
   setGrid(gridIndex)
   setCellIndex(cellIndex)
+  setText('Selecciona un número')
 }
 
   return (

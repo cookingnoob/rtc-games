@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddValidNumber = ({numberToAdd,sudokuBoard,grid,cellIndex,setSudokuBoard,setNumberToAdd,setGrid,setCellIndex }) => {
+const AddValidNumber = ({numberToAdd,sudokuBoard,grid,cellIndex,setSudokuBoard,setNumberToAdd,setGrid,setCellIndex, setText }) => {
 
    const handleSubmit = () => {
     addValueToBoard()
@@ -17,6 +17,7 @@ const resetValues = () => {
     setNumberToAdd(null);
     setGrid(null)
     setCellIndex(null)
+    setText('Selecciona una casilla')
 }
 
   return (
