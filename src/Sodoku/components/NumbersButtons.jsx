@@ -12,12 +12,14 @@ useEffect(() => {
 }, [grid, sudokuBoard])
 
 const handleNumberClick = (e) => {
-    const arrayToBeChanged = [...sudokuBoard]
-    arrayToBeChanged[grid][cellIndex] = Number(e.target.value)
-    console.log(Number(e.target.value))
-    setSudokuBoard(arrayToBeChanged)
+    changeArray(e)
     }
 
+    const changeArray = (e) => {
+        const arrayToBeChanged = [...sudokuBoard]
+        arrayToBeChanged[grid][cellIndex] = Number(e.target.value)
+        setSudokuBoard(arrayToBeChanged)
+    }
   return (
     <div className='numberButtonsContainer'>
     { buttonNumbers == '' ? <></> :
@@ -29,3 +31,4 @@ const handleNumberClick = (e) => {
 }
 
 export default NumbersButtons
+
