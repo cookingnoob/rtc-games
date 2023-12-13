@@ -13,7 +13,7 @@ const Sodoku = () => {
   const solved = solvepuzzle(sudokuBoard);
   return (
     <>
-    <h1>Sudoku</h1>
+    <h1 className="gameTitle">Sudoku</h1>
     <h2>{text}</h2>
   {sudokuBoard == null ? 
   <StartSudoku makepuzzle={makepuzzle} copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} setText={setText} buttonName={'inicia la partida'}/>

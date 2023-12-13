@@ -1,24 +1,15 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import ChooseValue from "./components/ChooseValue";
-import ResetButton from "./components/ResetButton";
-import Computer from "./components/Computer";
 import StartGame from "./components/StartGame";
-import Board from "./components/Board";
 import PlayingWindow from "./components/PlayingWindow";
 
 const TicTacToe = () => {
   const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
-
   const [player, setPlayer] = useState(null);
-
   const [computer, setComputer] = useState(null)
-
   const [text, setText] = useState("Escoge una ficha");
-
   const [turn, setTurn] = useState(null);
-
   const [winner, setWinner] = useState(null);
-  
   const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],];
 
 
@@ -57,7 +48,7 @@ const TicTacToe = () => {
       setText('Turno de la computadora')
     } else if (nextPlayer === "player") {
       setTurn("player");
-      setText('Turno del player')
+      setText('Turno del jugador')
     }
   };
 
@@ -87,11 +78,11 @@ const checkTie = (board) => {
 
   return (
     <>
-      <h1>Tic Tac Toe</h1>
+      <h1 className="gameTitle">Tic Tac Toe</h1>
       <h2>{text}</h2>
      <ChooseValue setText={setText} setPlayer={setPlayer} player={player}/>
      <StartGame turn={turn} setTurn={setTurn}  setText={setText} player={player}/>
-      <PlayingWindow setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn} setBoard={setBoard} setPlayer={setPlayer}  setText={setText}  setTurn={setTurn} setWinner={setWinner} />
+     <PlayingWindow setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn} setBoard={setBoard} setPlayer={setPlayer}  setText={setText}  setTurn={setTurn} setWinner={setWinner} />
     </>
   );
 };

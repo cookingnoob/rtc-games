@@ -1,10 +1,72 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@font-face {
+  font-family: Amatic;
+  src: url(./assets/Amatic_SC/AmaticSC-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+ 
+}
+@font-face {
+  font-family: Amatic-bold;
+  src: url(./assets/Amatic_SC/AmaticSC-Bold.ttf);
+  font-weight: bold;
+  font-style: normal;
+}
+*{
+  margin: 0%;
+}
+body{
+  font-family: Amatic;
+  margin: 0%;
+  width: 100vw;
+  height: 100vh;
 }
 
+header{
+  font-family:Amatic-bold ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav{
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+a{
+  text-decoration: none;
+}
+.navLink{
+  color: black;
+  font-size: x-large;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+a:hover{
+  cursor: pointer;
+  background-color: black;
+  color: whitesmoke;
+}
+main{
+  height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+.gameTitle{
+  font-family: Amatic-bold;
+}
+/* -------------------TICTACTOE */
 .card {
   padding: 2em;
 }
@@ -14,6 +76,8 @@
   grid-template-columns: repeat(3, 200px);
   grid-template-rows: repeat(3, 200px);
   gap: 10px;
+  font-family: Amatic-bold;
+  font-size: 40px;
 }
 
 .cell:hover{
@@ -24,12 +88,34 @@
 .inputContainer{
   display: flex;
 }
-nav{
+/* -------------------HANGMAN */
+.hangmanContainer{
+  height: 80vw;
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-/* -------------------HANGMAN */
+.hangmanContainer > h1 {
+  font-family: Amatic-bold;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.lettersContainer{
+
+height: 30vw;
+width: 70vw;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+gap: 10px;
+}
+.letterButton{
+height: 80px;
+}
 .wrongLetter{
   background-color: red;
 }
@@ -39,26 +125,32 @@ nav{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 15px;
+  justify-items: center;
+  width: 50vw;
 }
 .sudokuGrid{
+  width: 200px;
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
+  padding: 10px;
+  gap: 5px;
 }
 .sudokuCell{
   height: 50px;
   width: 50px;
   border: 1px solid black;
+  font-family: Amatic-bold;
+  font-size: large;
+  font-weight: bolder;
 }
 .numberButtonsContainer{
-
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
-  gap: 5px;
 }
 .numberButtons{
   height: 80px;

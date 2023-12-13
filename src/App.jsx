@@ -12,13 +12,14 @@ function App() {
       <h1>App de juegos</h1>
     </header>
     <nav>
-    <NavLink to="tic-tac-toe">TicTacToe</NavLink>
-    <NavLink to="hangman">Hangman</NavLink>
-    <NavLink to="sudoku">Sudoku</NavLink>
+    <NavLink to="tic-tac-toe" className='navLink'>TicTacToe</NavLink>
+    <NavLink to="hangman" className='navLink'>Hangman</NavLink>
+    <NavLink to="sudoku" className='navLink'>Sudoku</NavLink>
     </nav>
     <main>
       <Outlet />
     </main>
+    <footer>by Alan Coste 👾</footer>
     </>
   )
 }

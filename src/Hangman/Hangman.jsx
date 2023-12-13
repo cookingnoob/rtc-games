@@ -13,14 +13,14 @@ const Hangman = () => {
   
   return (
     <>
-    <h1>Hangman</h1>
+    <h1 className="gameTitle">Hangman</h1>
   
     {strike === '❌❌❌❌❌❌' ? 
       <> 
     <YouLostWindow strike={strike} wordToGuess={wordToGuess} setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
       </> 
     : 
-      <>
+      <div className='hangmanContainer'>
       {wordToGuess == '' ? 
         <>
         <StartMatch setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons}/>
@@ -34,7 +34,7 @@ const Hangman = () => {
         }
         
         </> }
-      </>
+      </div>
     }
     </>
   )

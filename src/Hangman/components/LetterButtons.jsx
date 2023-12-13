@@ -43,11 +43,11 @@ const setStrikeAndRemoveLetter = (e) => {
 
 
   return (
-    <>
+    <div className='lettersContainer'>
       {letterButtons.map((letter, index) => {
-        return <button key={index} value={letter} onClick={checkLetter}>{letter}</button>
+        return <button key={index} value={letter} onClick={checkLetter}className='letterButton'>{letter}</button>
      })}
-    </>
+    </div>
   )
 }
 
