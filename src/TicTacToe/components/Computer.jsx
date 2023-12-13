@@ -11,12 +11,13 @@ const Computer = ({setComputer, player, handleBoardInput, computer, board, winne
           .filter((index) => index !== null);
         return emptyCells[Math.floor(Math.random() * emptyCells.length)];
       };
+      
       useEffect(() => {
         if(turn === 'computadora' && winner == null){
-          setTimeout(() => {
+      
               const freeIndex = chooseFreeSpace(board);
               handleBoardInput(freeIndex, computer);
-          }, 1000);
+       
         }
       }, [winner, turn])
     
