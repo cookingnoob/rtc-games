@@ -77,13 +77,13 @@ const checkTie = (board) => {
 }
 
   return (
-    <>
+    <div className="ticPlayingWindow">
       <h1 className="gameTitle">Tic Tac Toe</h1>
-      <h2>{text}</h2>
+      <h2 className="instructionText">{text}</h2>
      <ChooseValue setText={setText} setPlayer={setPlayer} player={player}/>
      <StartGame turn={turn} setTurn={setTurn}  setText={setText} player={player}/>
      <PlayingWindow setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn} setBoard={setBoard} setPlayer={setPlayer}  setText={setText}  setTurn={setTurn} setWinner={setWinner} />
-    </>
+    </div>
   );
 };
 

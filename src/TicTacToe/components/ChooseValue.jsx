@@ -7,14 +7,14 @@ const ChooseValue = ({setPlayer, setText, player}) => {
       };
 
   return (
-    <>
+    <div className='ticValueButtons'>
     {player == null ? <> 
         <button onClick={() => choosePlayerValue('X')} value={"X"} className="checkerValue"> X </button>
         <button onClick={() => choosePlayerValue('O')} value={"O"} className="checkerValue"> O </button>
     </>
     : <></>}
        
-    </>
+    </div>
   )
 }
 

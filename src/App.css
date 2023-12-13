@@ -63,6 +63,12 @@ footer{
   align-items: center;
   font-size: large;
 }
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+
+}
 .gameTitle{
   font-family: Amatic-bold;
 }
@@ -87,6 +93,21 @@ footer{
 }
 .inputContainer{
   display: flex;
+}
+.ticPlayingWindow{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.ticBoardWindow{
+
+}
+
+.ticValueButtons{
+  display: flex;
+  gap: 10px;
 }
 /* -------------------HANGMAN */
 .hangmanContainer{
