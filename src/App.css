@@ -142,30 +142,31 @@ height: 80px;
 }
 
 /* -------------------SUDOKU */
-.sudokuBoard{
-  display: grid;
+.sudokuContainer{
+
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  justify-items: center;
-  width: 50vw;
+  border: 4px solid black; */
+  display: grid;
+  grid-template-columns: repeat(9, 50px);
+  grid-template-rows: repeat(9, 50px);
 }
+
 .sudokuGrid{
-  width: 200px;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  padding: 10px;
-  gap: 5px;
-}
+  /* display: flex;
+  flex-wrap: wrap;
+  padding: 10px; */
+
+} 
 .sudokuCell{
   height: 50px;
   width: 50px;
-  border: 1px solid black;
+  border: 1px solid grey; 
   font-family: Amatic-bold;
   font-size: large;
   font-weight: bolder;
+  
 }
 .numberButtonsContainer{
   display: flex;
@@ -175,4 +176,6 @@ height: 80px;
 }
 .numberButtons{
   height: 80px;
+  font-family:Amatic-bold;
+  font-size: larger;
 }

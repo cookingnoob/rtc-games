@@ -1,13 +1,13 @@
 import React from 'react'
 
-const DeleteButton = ({grid, cellIndex, sudokuBoard, setSudokuBoard,copyOfSudoku, setText }) => {
+const DeleteButton = ({ cellIndex, gridIndex, sudokuBoard, setSudokuBoard,copyOfSudoku, setText }) => {
     const handleDelete = () => {
-      if(copyOfSudoku[grid][cellIndex] !== null){
+      if(copyOfSudoku[gridIndex][cellIndex] !== null){
         setText('No se pueden cambiar los números originales')
         return
     }else{
       const arrayToBeChanged = [...sudokuBoard]
-      arrayToBeChanged[grid][cellIndex] = null
+      arrayToBeChanged[cellIndex] = null
       setSudokuBoard(arrayToBeChanged)
     }      
     }

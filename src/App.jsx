@@ -3,6 +3,7 @@ import './App.css'
 import Hangman from './Hangman/Hangman'
 import Sudoku from './Sudoku/Sudoku'
 import TicTacToe from './TicTacToe/TicTacToe'
+import { useEffect, useState } from 'react'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Outlet />
     </main>
     <footer>by Alan Coste 👾</footer>
+    
     </>
   )
 }
