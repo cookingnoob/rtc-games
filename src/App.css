@@ -143,14 +143,9 @@ height: 80px;
 
 /* -------------------SUDOKU */
 .sudokuContainer{
-
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  border: 4px solid black; */
-  display: grid;
-  grid-template-columns: repeat(9, 50px);
-  grid-template-rows: repeat(9, 50px);
+  display: flex;
+  flex-wrap: wrap;
+  width: 450px;
 }
 
 .sudokuGrid{
@@ -164,8 +159,8 @@ height: 80px;
   width: 50px;
   border: 1px solid grey; 
   font-family: Amatic-bold;
-  font-size: large;
-  font-weight: bolder;
+  font-size: 20px;
+  font-weight:900;
   
 }
 .numberButtonsContainer{

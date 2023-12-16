@@ -19,7 +19,7 @@ const PlayingSudokuWindow = ({sudokuBoard, copyOfSudoku, setSudokuBoard, makepuz
     <DeleteButton gridIndex={gridIndex} copyOfSudoku={copyOfSudoku} setText={setText} cellIndex={cellIndex} sudokuBoard={sudokuBoard} setSudokuBoard={setSudokuBoard} />
     <div className="refreshSudoku"> 
     <StartSudoku  setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} makepuzzle={makepuzzle} buttonName={'Nuevo tablero'}/>
-    <RestartSudoku copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard}/>
+    <RestartSudoku copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku}/>
     </div>
     </>
   )

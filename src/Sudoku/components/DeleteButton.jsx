@@ -7,7 +7,7 @@ const DeleteButton = ({ cellIndex, gridIndex, sudokuBoard, setSudokuBoard,copyOf
         return
     }else{
       const arrayToBeChanged = [...sudokuBoard]
-      arrayToBeChanged[cellIndex] = null
+      arrayToBeChanged[gridIndex][cellIndex] = null
       setSudokuBoard(arrayToBeChanged)
     }      
     }
