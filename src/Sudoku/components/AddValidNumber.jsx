@@ -2,107 +2,115 @@ import React from 'react'
 
 const AddValidNumber = ({copyOfSudoku, gridIndex, numberToAdd,sudokuBoard,cellIndex,setSudokuBoard,setNumberToAdd,setCellIndex, setText }) => {
 
-   const handleSubmit = () => {
-        if(isNumberNotSelected()){
-            return
-        } 
-        if(isUneditableNumber()){
-            return
+  const handleSubmit = () => {
+    if (isNumberNotSelected()) {
+      return;
+    }
+    if (isUneditableNumber()) {
+      return;
+    }
+    if (!validSudoku({sudokuBoard, numberToAdd, cellIndex, gridIndex})) {
+      return;
+    }
+    addValueToBoard();
+  };
+
+  const isNumberNotSelected = () => {
+    if (numberToAdd === null) {
+      setText("No has seleccionado un número!");
+      return true;
+    }
+    return false;
+  };
+
+  const isUneditableNumber = () => {
+    if (copyOfSudoku[gridIndex][cellIndex] !== null) {
+      setText("No se pueden cambiar los números originales");
+      return true;
+    }
+    return false;
+  };
+  const addValueToBoard = () => {
+    const arrayToBeChanged = [...sudokuBoard];
+    arrayToBeChanged[gridIndex][cellIndex] = numberToAdd;
+    setSudokuBoard(arrayToBeChanged);
+    resetValues();
+  };
+
+  const resetValues = () => {
+    setNumberToAdd(null);
+    setCellIndex(null);
+    setText("Selecciona una casilla");
+  };
+
+  function validSudoku({sudokuBoard, numberToAdd, cellIndex, gridIndex}) {
+          if (
+            !validRow(sudokuBoard, gridIndex, cellIndex, numberToAdd) ||
+            !validColumn(sudokuBoard, gridIndex, cellIndex, numberToAdd) ||
+            !validBox(sudokuBoard, gridIndex, cellIndex, numberToAdd)
+          ) {
+            setText("Se repite el número");
+            return false;
+          }
+    return true;
+  }
+
+  //The row function.
+  function validRow(board, row, col, value) {
+    // j represents on column
+    console.log(`Checking if ${value} is valid on row ${row + 1}`)
+    for (let j = 0; j < 9; j++) {
+      // check if the current column matches the passed in column
+      if (j !== col) {
+        if (board[row][j] === value) {
+            console.log(`${value} is equal to square on (${row},${j})`)
+            return false;
         }
-        addValueToBoard()
-    }
-    
-    const isNumberNotSelected = () => {
-        if(numberToAdd === null){
-        setText('No has seleccionado un número!')
-        return true 
-    }
-        return false
+      }
     }
 
-    const isUneditableNumber = () => {
-        if(copyOfSudoku[gridIndex][cellIndex] !== null){
-            setText('No se pueden cambiar los números originales')
-            return true
-    }
-        return false
-    }
-    const addValueToBoard = () => {
-        const arrayToBeChanged = [...sudokuBoard]
-        arrayToBeChanged[gridIndex][cellIndex] = numberToAdd
-        setSudokuBoard(arrayToBeChanged)
-        resetValues()
-    }
+    return true;
+  }
 
-    const resetValues = () => {
-        setNumberToAdd(null);
-        setCellIndex(null)
-        setText('Selecciona una casilla')
+  // The column function.
+  function validColumn(board, row, col, value) {
+    // j represents on row
+    for (let i = 0; i < 9; i++) {
+      // check if the current row matches the passed in row
+      if (i !== row) {
+        if (board[i][col] === value) {
+          return false;
+        }
+      }
     }
 
+    return true;
+  }
 
+  //The sub-boxes function.
+  function validBox(board, row, col, value) {
+    const startRow = row - (row % 3),
+      startCol = col - (col % 3);
 
-  return (
-    <button onClick={() => handleSubmit()}>Colocar numero</button>
-  )
+    for (let i = startRow; i < startRow + 3; i++) {
+      for (let j = startCol; j < startCol + 3; j++) {
+        if (i !== row && j !== col) {
+          if (board[i][j] === value) {
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
+  }
+
+  return <button onClick={() => handleSubmit()}>Colocar numero</button>;
 }
 
 export default AddValidNumber
 
-    // if(numberToAdd === null){
-    //     setText('No has seleccionado un número!')
-    //     return
-    // } else if(copyOfSudoku[grid][cellIndex] !== null){
-    //     console.log(copyOfSudoku[cellIndex])
-    //     setText('No se pueden cambiar los números originales')
-    //     return
-    // }else if(validSudoku(sudokuBoard,cellIndex, numberToAdd)){
+    //    if(validSudoku(sudokuBoard,cellIndex, numberToAdd)){
     //     setText('No puedes poner este número porque se repite');
     //     return
     // }else{
-    // const getRow = index => Math.floor(index / 9);
-    // const getCol = index => index % 9;
-    
-    // const validRow = (sudokuBoard, index, numberToAdd) => {
-    //     const row = getRow(index);
-    //     for (let i = 0; i < 9; i++) {
-    //         if (i !== getCol(index) && sudokuBoard[row * 9 + i] === numberToAdd) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // };
-    
-    // const validColumn = (sudokuBoard, index, numberToAdd) => {
-    //     const col = getCol(index);
-    //     for (let i = 0; i < 9; i++) {
-    //         if (i !== getRow(index) && sudokuBoard[i * 9 + col] === numberToAdd) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // };
-    
-    // const validBox = (sudokuBoard, index, numberToAdd) => {
-    //     const row = getRow(index);
-    //     const col = getCol(index);
-    //     const startRow = row - row % 3;
-    //     const startCol = col - col % 3;
-    //     for (let i = startRow; i < startRow + 3; i++) {
-    //         for (let j = startCol; j < startCol + 3; j++) {
-    //             const boxIndex = i * 9 + j;
-    //             if (boxIndex !== index && sudokuBoard[boxIndex] === numberToAdd) {
-    //                 return false;
-    //             }
-    //         }
-    //     }
-    //     return true;
-    // };
-    
-    // // Ajusta la función validSudoku para que trabaje con el índice lineal
-    // const validSudoku = (sudokuBoard, index, numberToAdd) => {
-    //     return validRow(sudokuBoard, index, numberToAdd) &&
-    //            validColumn(sudokuBoard, index, numberToAdd) &&
-    //            validBox(sudokuBoard, index, numberToAdd);
-    // };
-    

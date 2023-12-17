@@ -1,6 +1,4 @@
-
 const StartSudoku = ({setCopyOfSudoku, setSudokuBoard, setText, buttonName}) => {
-
 
   const startSudoku = async () => {
    try{
@@ -11,6 +9,7 @@ const StartSudoku = ({setCopyOfSudoku, setSudokuBoard, setText, buttonName}) => 
     setSudokuBoard(modifiedArray)
     setCopyOfSudoku([...grids.map((grid) => grid.map((cell) => cell == 0 ? null : cell))])
     setText('Selecciona una casilla')
+    console.log(modifiedArray)
    }catch(error){
     setText('hubo un problema')
    } 

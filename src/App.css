@@ -141,24 +141,55 @@ height: 80px;
   background-color: red;
 }
 
+/*
+
+  <div style={{display: grid}}>
+    <div id="cell_1-1" />
+    <div id="cell_1-2" />
+    <div id="cell_1-3" />
+    <div id="cell_1-4" />
+    ....
+    <div id="cell_9-8" />
+    <div id="cell_9-9" />
+  </div>
+
+  <div style={{display: flex; flex-direction: column}}>
+    <div id="row_1" style={{display: flex; flex-direction: row}>
+      <div id="cell_1-1" />
+      <div id="cell_1-2" />
+      <div id="cell_1-3" />
+      <div id="cell_1-4" />
+    </div>
+    <div id="row_2">
+    ....
+    <div id="cell_9-8" />
+    <div id="cell_9-9" />
+  </div>
+
+*/
+
 /* -------------------SUDOKU */
 .sudokuContainer{
   display: flex;
-  flex-wrap: wrap;
-  width: 450px;
+  flex-direction: column;
 }
+.columnSpace{
+  width: 10px;
+}
+.rowSpace{
+ height: 10px;
 
+}
 .sudokuGrid{
-  /* display: flex;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px; */
-
 } 
 .sudokuCell{
   height: 50px;
   width: 50px;
   border: 1px solid grey; 
-  font-family: Amatic-bold;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight:900;
   
@@ -171,6 +202,5 @@ height: 80px;
 }
 .numberButtons{
   height: 80px;
-  font-family:Amatic-bold;
-  font-size: larger;
+  font-family:Arial, Helvetica, sans-serif;
 }

@@ -1,6 +1,4 @@
-import React from 'react'
-
-const RestartSudoku = ({copyOfSudoku,setSudokuBoard, setCopyOfSudoku }) => {
+const RestartSudoku = ({copyOfSudoku,setSudokuBoard}) => {
 
     const handleRestart = () => {
     const copyOfCopy = JSON.parse(JSON.stringify(copyOfSudoku));

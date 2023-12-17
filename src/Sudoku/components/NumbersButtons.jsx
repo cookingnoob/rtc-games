@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from 'react'
-
-const NumbersButtons = ({setText, sudokuBoard, setNumberToAdd}) => {
-    const [buttonNumbers, setButtonNumbers] = useState([]);
+const NumbersButtons = ({setText, setNumberToAdd}) => {
     const numbers = [1,2,3,4,5,6,7,8,9];
-
 
     const handleNumberClick = (e) => {
       setNumberToAdd(Number(e.target.value))
