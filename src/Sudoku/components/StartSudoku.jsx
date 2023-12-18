@@ -1,15 +1,15 @@
-const StartSudoku = ({setCopyOfSudoku, setSudokuBoard, setText, buttonName}) => {
+const StartSudoku = ({setCopyOfSudoku,setSolution, setSudokuBoard, setText, buttonName}) => {
 
   const startSudoku = async () => {
    try{
-    const response = await fetch('https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}')
+    const response = await fetch('https://sudoku-api.vercel.app/api/dosuku')
     const data = await response.json();
     const grids = data.newboard.grids[0].value;
     const modifiedArray = grids.map((grid) => grid.map((cell) => cell == 0 ? null : cell))
     setSudokuBoard(modifiedArray)
     setCopyOfSudoku([...grids.map((grid) => grid.map((cell) => cell == 0 ? null : cell))])
+    setSolution(data.newboard.grids[0].solution)
     setText('Selecciona una casilla')
-    console.log(modifiedArray)
    }catch(error){
     setText('hubo un problema')
    } 
