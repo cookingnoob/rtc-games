@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SudokuContext } from "../SudokuContext";
 
-const StartSudoku = ({setCopyOfSudoku,setSolution, setSudokuBoard, setText, buttonName}) => {
+const StartSudoku = ({buttonName}) => {
   const [loading, setLoading] = useState(false)
+  const {setCopyOfSudoku,setSolution, setSudokuBoard, sudokuBoard, setText} = useContext(SudokuContext)
+
 
   const startSudoku = async () => {
+    if(sudokuBoard !== null){
+      setText('Cargando el Sudoku, espera ⏳')
+      setSudokuBoard(null)
+    }
    setLoading(true)
    try{
     const response = await fetch('https://sudoku-api.vercel.app/api/dosuku')
@@ -30,7 +37,3 @@ const StartSudoku = ({setCopyOfSudoku,setSolution, setSudokuBoard, setText, butt
 }
 
 export default StartSudoku
-
- // const newBoard = makepuzzle();
-  // const gridArrays = [newBoard.slice(0,9), newBoard.slice(9,18),newBoard.slice(18,27), newBoard.slice(27,36),newBoard.slice(36,45), newBoard.slice(45,54),newBoard.slice(54,63), newBoard.slice(63,72),newBoard.slice(72,81)];
-        // const copyGridArrays = [newBoard.slice(0,9), newBoard.slice(9,18),newBoard.slice(18,27), newBoard.slice(27,36),newBoard.slice(36,45), newBoard.slice(45,54),newBoard.slice(54,63), newBoard.slice(63,72),newBoard.slice(72,81)];

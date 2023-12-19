@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { SudokuContext } from '../SudokuContext'
 
-const DeleteButton = ({ cellIndex, gridIndex, sudokuBoard, setSudokuBoard,copyOfSudoku, setText }) => {
+const DeleteButton = () => {
+  const {cellIndex, gridIndex, sudokuBoard, setSudokuBoard,copyOfSudoku, setText} = useContext(SudokuContext)
     const handleDelete = () => {
       if(copyOfSudoku[gridIndex][cellIndex] !== null){
         setText('No se pueden cambiar los números originales')

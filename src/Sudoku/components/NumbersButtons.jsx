@@ -1,4 +1,8 @@
-const NumbersButtons = ({setText, setNumberToAdd}) => {
+import { useContext } from "react";
+import { SudokuContext } from "../SudokuContext";
+
+const NumbersButtons = ({}) => {
+  const {setText, setNumberToAdd} = useContext(SudokuContext)
     const numbers = [1,2,3,4,5,6,7,8,9];
 
     const handleNumberClick = (e) => {

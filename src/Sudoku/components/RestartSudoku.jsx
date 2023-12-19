@@ -1,5 +1,8 @@
-const RestartSudoku = ({copyOfSudoku,setSudokuBoard}) => {
+import { useContext } from "react";
+import { SudokuContext } from "../SudokuContext";
 
+const RestartSudoku = ({}) => {
+const {copyOfSudoku,setSudokuBoard} = useContext(SudokuContext)
     const handleRestart = () => {
     const copyOfCopy = JSON.parse(JSON.stringify(copyOfSudoku));
     setSudokuBoard(copyOfCopy)

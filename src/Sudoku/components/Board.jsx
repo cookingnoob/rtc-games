@@ -1,5 +1,8 @@
-const Board = ({sudokuBoard, setGridIndex, setCellIndex, setText}) => {
+import { useContext } from "react"
+import { SudokuContext } from "../SudokuContext"
 
+const Board = () => {
+const {sudokuBoard, setGridIndex, setCellIndex, setText} = useContext(SudokuContext)
 const handleSudokuClick = (gridIndex, cellIndex) => {
   setGridIndex(gridIndex)
   setCellIndex(cellIndex)
