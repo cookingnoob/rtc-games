@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import StartButton from './StartButton'
+import { HangmanContext } from '../HangmanContex'
 
-const StartMatch = ({setWordToGuess, listOfWords,setStrike,setLetterButtons}) => {
+const StartMatch = () => {
+  const {setWordToGuess, listOfWords,setStrike,setLetterButtons} = useContext(HangmanContext)
   return (
     <>
     <h2>Listo para jugar?🤓</h2> 

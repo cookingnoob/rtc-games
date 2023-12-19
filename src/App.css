@@ -149,11 +149,11 @@ height: 80px;
   flex-direction: column;
 }
 .columnSpace{
-  width: 10px;
+  width: 60px;
+
 }
 .rowSpace{
  height: 10px;
-
 }
 .sudokuGrid{
   display: flex;
@@ -184,9 +184,11 @@ height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   height: 100px;
 }
 .numberButtons{
-  height: 80px;
+  height: 70px;
+  width: 40px;
   font-family:Arial, Helvetica, sans-serif;
 }

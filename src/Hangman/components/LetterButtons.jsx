@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { HangmanContext } from '../HangmanContex';
 
-const LetterButtons = ({wordToGuess, setStrike, strike, letterButtons, setLetterButtons, playerString, setPlayerString}) => {
-    
+const LetterButtons = () => {
+    const {wordToGuess, setStrike, strike, letterButtons, setLetterButtons, playerString, setPlayerString} = useContext(HangmanContext)
     const checkLetter = (e) => {
       if (wordToGuess.includes(e.target.value)){
         const letter = e.target.value;

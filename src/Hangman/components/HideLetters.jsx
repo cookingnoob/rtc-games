@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+import { HangmanContext } from '../HangmanContex'
 
-const HideLetters = ({wordToGuess, setPlayerString, playerString}) => {
-   
+const HideLetters = () => {
+   const {wordToGuess, setPlayerString, playerString} = useContext(HangmanContext)
     useEffect(() => {
         if(wordToGuess === undefined){
             return

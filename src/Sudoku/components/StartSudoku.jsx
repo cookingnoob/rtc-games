@@ -30,8 +30,8 @@ const StartSudoku = ({buttonName}) => {
 
   return (
     <>
-    {loading ? setText('Cargando el Sudoku, espera ⏳') : <></>}
-    <button onClick={startSudoku}>{buttonName}</button>
+   {loading && <h1>Cargando el Sudoku, espera ⏳</h1>}
+   <button onClick={startSudoku} disabled={loading}>{buttonName}</button>
     </>
   )
 }

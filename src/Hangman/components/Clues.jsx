@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { HangmanContext } from '../HangmanContex'
 
-const Clues = ({strike, wordToGuess}) => {
+const Clues = () => {
+  const {strike, wordToGuess} = useContext(HangmanContext)
     const [clue, setClue] =useState('')
     useEffect(() => { 
         if(strike === '❌❌❌' || strike === '❌❌❌❌' || strike === '❌❌❌❌❌'){

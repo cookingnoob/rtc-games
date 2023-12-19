@@ -1,7 +1,9 @@
+import { useContext } from "react";
+import { HangmanContext } from "../HangmanContex";
 
 
-const StartButton = ({setWordToGuess, listOfWords, setStrike, setLetterButtons}) => {
-
+const StartButton = () => {
+const {setWordToGuess, listOfWords, setStrike, setLetterButtons} = useContext(HangmanContext)
     const startGame = () => {
           const randomNumber = Math.floor(Math.random() * listOfWords.length);
           const selectedWord = listOfWords[randomNumber];
