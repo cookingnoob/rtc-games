@@ -1,89 +1,12 @@
-import { useState, useCallback } from "react";
-import ChooseValue from "./components/ChooseValue";
-import StartGame from "./components/StartGame";
-import PlayingWindow from "./components/PlayingWindow";
+import { TicTacToeProvider } from "./TicTacToeContext";
+import StartWindow from "./components/StartWindow";
 
 const TicTacToe = () => {
-  const [board, setBoard] = useState([null,null,null, null, null,null,null, null,null,]);
-  const [player, setPlayer] = useState(null);
-  const [computer, setComputer] = useState(null)
-  const [text, setText] = useState("Escoge una ficha");
-  const [turn, setTurn] = useState(null);
-  const [winner, setWinner] = useState(null);
-  const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],];
-
-
-  const handleBoardInput = useCallback(
-    (index, currentPlayer) => {
-      if (player == null) {
-        setText("Has clic en el botón para iniciar la partida");
-        return;
-      } else if (board[index] !== null) {
-        return;
-      } else if(winner != null){
-        return
-      }
-
-      const newBoard = [...board];
-      newBoard[index] = currentPlayer;
-      setBoard(newBoard);
-
-     if (turn === 'computadora'){
-        passTurnTo('player')
-      } else if (turn === 'player'){
-        passTurnTo('computadora')
-      }
-      checkWinner(newBoard);
-      checkTie(newBoard)
-    }
-  ,[winner, turn]);
-
- 
-//cambia el estado de turno para saber quien esta jugando
-  const passTurnTo = (nextPlayer) => {
-    if (nextPlayer === null) {
-      return;
-    } else if (nextPlayer === "computadora") {
-      setTurn("computadora");
-      setText('Turno de la computadora')
-    } else if (nextPlayer === "player") {
-      setTurn("player");
-      setText('Turno del jugador')
-    }
-  };
-
-//Checa si alguien gano
-const checkWinner = (board) =>  {
-  winningCombinations.forEach(combination => {
-      const [a, b, c] = combination;
-      if(board[a] != null){
-        if(board[a] == board[b] && board[b] == board[c] && board[a] == board[c]){
-          if(turn == 'computadora'){
-            setWinner('computadora')
-            setText(`Ganó la computadora!! 🤖`);
-          } else if (turn == 'player'){
-            setWinner('jugador')
-            setText('Gano el jugador 🧘🏽')
-          }}
-        }
-      }
-    )
-  }
-  
-const checkTie = (board) => {
-  if(board.every(cell => cell != null)){
-    setText('Empate')
-  }
-}
 
   return (
-    <div className="ticPlayingWindow">
-      <h1 className="gameTitle">Tic Tac Toe</h1>
-      <h2 className="instructionText">{text}</h2>
-     <ChooseValue setText={setText} setPlayer={setPlayer} player={player}/>
-     <StartGame turn={turn} setTurn={setTurn}  setText={setText} player={player}/>
-     <PlayingWindow setComputer={setComputer} player={player} handleBoardInput={handleBoardInput} computer={computer} board={board} winner={winner} turn={turn} setBoard={setBoard} setPlayer={setPlayer}  setText={setText}  setTurn={setTurn} setWinner={setWinner} />
-    </div>
+<TicTacToeProvider>
+  <StartWindow/>
+</TicTacToeProvider>
   );
 };
 

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TicTacToeContext } from '../TicTacToeContext';
 
-const StartGame = ({turn,setTurn, setText, player}) => {
-
+const StartGame = () => {
+const {turn,setTurn, setText, player} = useContext(TicTacToeContext)
   const gameStart = () => {
       let randomNumber = Math.floor(Math.random() * 2);
         if (randomNumber === 0) {

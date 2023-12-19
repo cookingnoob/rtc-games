@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TicTacToeContext } from '../TicTacToeContext';
 
-const ChooseValue = ({setPlayer, setText, player}) => {
+const ChooseValue = () => {
+  const {setPlayer, setText, player} = useContext(TicTacToeContext)
     const choosePlayerValue = (value) => {
         setPlayer(value);
         setText(`Has escogido ${value}`)

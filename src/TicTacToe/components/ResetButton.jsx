@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TicTacToeContext } from '../TicTacToeContext'
 
-const ResetButton = ({setBoard, setPlayer, setComputer, setText, setTurn, setWinner}) => {
+const ResetButton = () => {
+  const{setBoard, setPlayer, setComputer, setText, setTurn, setWinner} = useContext(TicTacToeContext)
     const resetGame = () => {
         setBoard([null, null, null, null, null, null, null, null, null])
         setPlayer(null);

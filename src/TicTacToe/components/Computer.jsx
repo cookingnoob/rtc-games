@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { TicTacToeContext } from '../TicTacToeContext'
 
-const Computer = ({setComputer, player, handleBoardInput, computer, board, winner, turn}) => {
+const Computer = () => {
+  const {setComputer, player, handleBoardInput, computer, board, winner, turn} = useContext(TicTacToeContext)
     useEffect(() => {
         setComputer(player === 'X' ? 'O' : 'X')
     }), [player]

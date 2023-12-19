@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Board from './Board'
 import Computer from './Computer'
 import ResetButton from './ResetButton'
+import { TicTacToeContext } from '../TicTacToeContext'
 
-const PlayingWindow = ({board,handleBoardInput, player, setComputer, setBoard, setPlayer, setText, computer, setTurn, setWinner, winner, turn }) => {
+const PlayingWindow = () => {
+  const {board,handleBoardInput, player, setComputer, setBoard, setPlayer, setText, computer, setTurn, setWinner, winner, turn } = useContext(TicTacToeContext)
   return (
     <div className='ticBoardWindow'>
     {turn != null && player != null ? <>
