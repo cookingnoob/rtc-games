@@ -9,7 +9,7 @@ const StartSudoku = ({setCopyOfSudoku,setSolution, setSudokuBoard, setText, butt
     setSudokuBoard(modifiedArray)
     setCopyOfSudoku([...grids.map((grid) => grid.map((cell) => cell == 0 ? null : cell))])
     setSolution(data.newboard.grids[0].solution)
-    setText('Selecciona una casilla')
+    setText('cargando el sudoku')
    }catch(error){
     setText('hubo un problema')
    } 

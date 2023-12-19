@@ -15,6 +15,7 @@
   margin: 0%;
 }
 body{
+  background-color: ;
   font-family: Amatic;
   margin: 0%;
   width: 100vw;
@@ -64,10 +65,10 @@ footer{
   font-size: large;
 }
 button {
-  border-radius: 8px;
+  border-radius: 15px;
+  background-color: whitesmoke;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-
 }
 .gameTitle{
   font-family: Amatic-bold;
@@ -141,32 +142,6 @@ height: 80px;
   background-color: red;
 }
 
-/*
-
-  <div style={{display: grid}}>
-    <div id="cell_1-1" />
-    <div id="cell_1-2" />
-    <div id="cell_1-3" />
-    <div id="cell_1-4" />
-    ....
-    <div id="cell_9-8" />
-    <div id="cell_9-9" />
-  </div>
-
-  <div style={{display: flex; flex-direction: column}}>
-    <div id="row_1" style={{display: flex; flex-direction: row}>
-      <div id="cell_1-1" />
-      <div id="cell_1-2" />
-      <div id="cell_1-3" />
-      <div id="cell_1-4" />
-    </div>
-    <div id="row_2">
-    ....
-    <div id="cell_9-8" />
-    <div id="cell_9-9" />
-  </div>
-
-*/
 
 /* -------------------SUDOKU */
 .sudokuContainer{
