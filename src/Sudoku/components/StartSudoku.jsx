@@ -1,6 +1,10 @@
+import { useState } from "react";
+
 const StartSudoku = ({setCopyOfSudoku,setSolution, setSudokuBoard, setText, buttonName}) => {
+  const [loading, setLoading] = useState(false)
 
   const startSudoku = async () => {
+   setLoading(true)
    try{
     const response = await fetch('https://sudoku-api.vercel.app/api/dosuku')
     const data = await response.json();
@@ -9,14 +13,19 @@ const StartSudoku = ({setCopyOfSudoku,setSolution, setSudokuBoard, setText, butt
     setSudokuBoard(modifiedArray)
     setCopyOfSudoku([...grids.map((grid) => grid.map((cell) => cell == 0 ? null : cell))])
     setSolution(data.newboard.grids[0].solution)
-    setText('cargando el sudoku')
+    setText('Selecciona una casilla')
    }catch(error){
-    setText('hubo un problema')
-   } 
+    setText('hubo un con el servidor, intenta más tarde')
+   } finally{
+    setLoading(false)
+   }
   }
 
   return (
+    <>
+    {loading ? setText('Cargando el Sudoku, espera ⏳') : <></>}
     <button onClick={startSudoku}>{buttonName}</button>
+    </>
   )
 }
 

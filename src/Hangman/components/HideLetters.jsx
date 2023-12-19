@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect } from 'react'
 
 const HideLetters = ({wordToGuess, setPlayerString, playerString}) => {
    
-
     useEffect(() => {
         if(wordToGuess === undefined){
             return

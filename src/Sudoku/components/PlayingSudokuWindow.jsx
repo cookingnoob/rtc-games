@@ -22,7 +22,7 @@ const PlayingSudokuWindow = ({sudokuBoard,solution, setSolution, copyOfSudoku, s
     </div>
     <div className="refreshSudoku"> 
       <SolveButton solution={solution} sudokuBoard={sudokuBoard} setText={setText}/>
-      <StartSudoku  setSolution={setSolution} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} makepuzzle={makepuzzle} buttonName={'Nuevo tablero'}/>
+      <StartSudoku  sudokuBoard={sudokuBoard} setText={setText} setSolution={setSolution} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} makepuzzle={makepuzzle} buttonName={'Nuevo tablero'}/>
       <RestartSudoku copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku}/>
     </div>
     </>

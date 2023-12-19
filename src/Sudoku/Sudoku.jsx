@@ -17,8 +17,8 @@ const Sodoku = () => {
     <>
     <h1 className="gameTitle">Sudoku</h1>
     <h2>{text}</h2>
-  {sudokuBoard == null ? 
-  <StartSudoku setSolution={setSolution} copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} setText={setText} buttonName={'inicia la partida'}/>
+  {sudokuBoard === null ? 
+  <StartSudoku sudokuBoard={sudokuBoard} setSolution={setSolution} copyOfSudoku={copyOfSudoku} setSudokuBoard={setSudokuBoard} setCopyOfSudoku={setCopyOfSudoku} setText={setText} buttonName={'inicia la partida'}/>
   : 
   <>
   <PlayingSudokuWindow solution={solution} setSolution={setSolution} sudokuBoard={sudokuBoard} copyOfSudoku={copyOfSudoku} setText={setText} setCopyOfSudoku={setCopyOfSudoku} setSudokuBoard={setSudokuBoard}/>
