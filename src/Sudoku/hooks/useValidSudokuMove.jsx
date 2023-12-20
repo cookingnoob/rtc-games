@@ -2,9 +2,10 @@ import React, { useContext } from 'react'
 import { SudokuContext } from '../SudokuContext';
 
 const useValidSudokuMove = () => {
-const {setText} = useContext(SudokuContext);
-
-  function validSudoku({ sudokuBoard, numberToAdd, cellIndex, gridIndex }) {
+const {setText,sudokuBoard, numberToAdd, cellIndex, gridIndex } = useContext(SudokuContext);
+//checks if the number the player wants to add is not being repeated on row, column or box
+//if it is sets text
+  function validSudoku() {
     if (
       !validRow(sudokuBoard, gridIndex, cellIndex, numberToAdd) ||
       !validColumn(sudokuBoard, gridIndex, cellIndex, numberToAdd) ||

@@ -5,6 +5,7 @@ import useBoardInput from '../hooks/useBoardInput';
 const Board = () => {
   const { board, player } = useContext(TicTacToeContext);
   const {handleBoardInput} = useBoardInput();
+  //creates a board, it maps through board array and creates a button for each element
   return (
     <div className="board">
       {board.map((cell, index) => {

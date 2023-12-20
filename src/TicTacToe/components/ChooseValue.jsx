@@ -7,6 +7,7 @@ const ChooseValue = () => {
   const choosePlayerValue = usePlayerValueTTT();
 
   return (
+    //two buttons so the player can choose a value, the computer will take the other value
     <div className='ticValueButtons'>
     {player == null ? <> 
         <button onClick={() => choosePlayerValue('X')} value={"X"} className="checkerValue"> X </button>

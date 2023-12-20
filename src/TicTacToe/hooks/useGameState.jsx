@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { TicTacToeContext } from '../TicTacToeContext'
 
 const useGameState = () => {
     const {setWinner, setText, winningCombinations, turn} = useContext(TicTacToeContext);
-
+    //checks if one of the possible winning combinations has been declared
+    //if there is a winner it sets winner and text state
     const checkWinner = (board) => {
         winningCombinations.forEach(combination => {
           const [a, b, c] = combination;
