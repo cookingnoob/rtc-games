@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { HangmanContext } from '../HangmanContex'
+import { HangmanContext } from '../HangmanContext'
 
 const Clues = () => {
   const {strike, wordToGuess} = useContext(HangmanContext)

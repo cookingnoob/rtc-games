@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { HangmanContext } from "../HangmanContex";
+import { HangmanContext } from "../HangmanContext";
 
 const useStartHangman = () => {
     const {setWordToGuess, listOfWords, setStrike, setLetterButtons} = useContext(HangmanContext)

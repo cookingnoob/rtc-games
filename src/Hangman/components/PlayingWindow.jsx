@@ -2,7 +2,7 @@ import LetterButtons from './LetterButtons'
 import Clues from './Clues'
 import HideLetters from './HideLetters'
 import { useContext } from 'react'
-import { HangmanContext } from '../HangmanContex'
+import { HangmanContext } from '../HangmanContext'
 
 const PlayingWindow = () => {
 const {strike} = useContext(HangmanContext)

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import StartButton from './StartButton'
-import { HangmanContext } from '../HangmanContex'
+import { HangmanContext } from '../HangmanContext'
 
 const YouLostWindow = () => {
 const {wordToGuess} = useContext(HangmanContext)

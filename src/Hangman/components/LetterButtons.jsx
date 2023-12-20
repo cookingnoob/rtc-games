@@ -1,27 +1,11 @@
 import { useContext } from 'react'
-import { HangmanContext } from '../HangmanContex';
-import useGetLetterIndex from '../hooks/useGetLetterIndex';
-import useUpdateWord from '../hooks/useUpdateWord';
-import useWrongLetter from '../hooks/useWrongLetter';
+
+import useCheckLetter from '../hooks/useCheckLetter';
+import { HangmanContext } from '../HangmanContext';
 
 const LetterButtons = () => {
-    const {wordToGuess, letterButtons, setPlayerString} = useContext(HangmanContext)
-    const {getIndex} = useGetLetterIndex()
-    const {updateGuessWord} = useUpdateWord();
-    const {setStrikeAndRemoveLetter} = useWrongLetter()
-    const checkLetter = (e) => {
-      if (wordToGuess.includes(e.target.value)){
-        const letter = e.target.value;
-        const index = getIndex(e);
-        const updatedGuessWord = updateGuessWord(letter, index)
-        setPlayerString(updatedGuessWord)
-        } else {
-          setStrikeAndRemoveLetter(e)
-        } 
-    }
-
-
-
+    const {letterButtons} = useContext(HangmanContext)
+ const {checkLetter} = useCheckLetter()
 
   return (
     <div className='lettersContainer'>

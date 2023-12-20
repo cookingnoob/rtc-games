@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { HangmanContext } from '../HangmanContex'
+import { HangmanContext } from '../HangmanContext'
 
 const useHideLetters = () => {
     const {wordToGuess, setPlayerString} = useContext(HangmanContext)

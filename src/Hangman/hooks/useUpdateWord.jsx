@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { HangmanContext } from '../HangmanContex';
+import { HangmanContext } from '../HangmanContext';
 
 const useUpdateWord = () => {
     const {playerString} = useContext(HangmanContext)

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { HangmanContext } from '../HangmanContex'
+import { useContext } from 'react'
+import { HangmanContext } from '../HangmanContext'
 
 const useWrongLetter = () => {
 const {letterButtons, setLetterButtons, setStrike, strike} = useContext(HangmanContext)

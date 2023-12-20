@@ -1,5 +1,5 @@
 import { useContext} from 'react'
-import { HangmanContext } from '../HangmanContex'
+import { HangmanContext } from '../HangmanContext'
 import useHideLetters from '../hooks/useHideLetters';
 
 const HideLetters = () => {

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { HangmanContext } from '../HangmanContex';
+import { HangmanContext } from '../HangmanContext';
 import StartMatch from './StartMatch';
 import PlayingWindow from './PlayingWindow';
 import YouLostWindow from'./YouLostWindow'

@@ -1,4 +1,4 @@
-import { HangmanProvider } from "./HangmanContex"
+import { HangmanProvider } from "./HangmanContext"
 import GameFlowWindow from "./components/GameFlowWindow"
 
 
