@@ -1,14 +1,10 @@
 import { useContext } from "react"
 import { SudokuContext } from "../SudokuContext"
+import usePlayNumber from "../hooks/usePlayNumber"
 
 const Board = () => {
-const {sudokuBoard, setGridIndex, setCellIndex, setText} = useContext(SudokuContext)
-const handleSudokuClick = (gridIndex, cellIndex) => {
-  setGridIndex(gridIndex)
-  setCellIndex(cellIndex)
-  setText('Selecciona un número')
-}
-
+const {sudokuBoard} = useContext(SudokuContext)
+const {handleSudokuClick} = usePlayNumber()
   return (
     <div className="sudokuContainer"> 
      {sudokuBoard.map((grid, gridIndex) => {
@@ -22,7 +18,7 @@ const handleSudokuClick = (gridIndex, cellIndex) => {
             // If cellIndex is multiple of three, add a small div to divide the 3x3 grids
             return <div key={`cellHolder ${cellIndex}`}> 
             <button key={uniqueIndex} className='sudokuCell' value={cell} onClick={() => handleSudokuClick(gridIndex, cellIndex)}>{cell}</button>
-            { cellIndex == 2 || cellIndex == 5 ? <div key={`columnSpace-${cellIndex}`} className="columnSpace"></div> : console.log('no funciona')}
+            { cellIndex == 2 || cellIndex == 5 ? <div key={`columnSpace-${cellIndex}`} className="columnSpace"></div> : <></>}
             </div> 
           })}
        </div>
@@ -36,5 +32,4 @@ const handleSudokuClick = (gridIndex, cellIndex) => {
 
 export default Board
 
-// const { playNumber } = usePlayNumber();
 
