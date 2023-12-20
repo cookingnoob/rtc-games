@@ -1,5 +1,3 @@
-import React, { useContext } from 'react'
-import { SudokuContext } from '../SudokuContext'
 import useDeleteNumber from '../hooks/useDeleteNumber'
 
 const DeleteButton = () => {

@@ -9,11 +9,9 @@ const {handleSudokuClick} = usePlayNumber()
     <div className="sudokuContainer"> 
      {sudokuBoard.map((grid, gridIndex) => {
       // If gridIndex is multiple of three, add a small div to divide each of the 3x3 grid rows
-      return <div key={`gridHolder ${gridIndex}`}> 
+        return <div key={`gridHolder ${gridIndex}`}> 
       <div className='sudokuGrid' key={`gridIndex-${gridIndex}`}>
-       
           {grid.map((cell, cellIndex) => {
-            
             const uniqueIndex = `grid-${gridIndex}-cell${cellIndex}`
             // If cellIndex is multiple of three, add a small div to divide the 3x3 grids
             return <div key={`cellHolder ${cellIndex}`}> 
