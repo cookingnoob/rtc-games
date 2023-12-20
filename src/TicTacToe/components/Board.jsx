@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { TicTacToeContext } from '../TicTacToeContext';
+import useBoardInput from '../hooks/useBoardInput';
 
-const Board = ({ handleBoardInput }) => {
-  const { board, player } = useContext(TicTacToeContext)
+const Board = () => {
+  const { board, player } = useContext(TicTacToeContext);
+  const {handleBoardInput} = useBoardInput();
   return (
     <div className="board">
       {board.map((cell, index) => {
