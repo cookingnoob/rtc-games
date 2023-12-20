@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { TicTacToeContext } from '../TicTacToeContext';
+import usePlayerValueTTT from '../hooks/usePlayerValueTTT';
 
 const ChooseValue = () => {
-  const {setPlayer, setText, player} = useContext(TicTacToeContext)
-    const choosePlayerValue = (value) => {
-        setPlayer(value);
-        setText(`Has escogido ${value}`)
-      };
+  const {player} = useContext(TicTacToeContext)
+  const choosePlayerValue = usePlayerValueTTT();
 
   return (
     <div className='ticValueButtons'>
