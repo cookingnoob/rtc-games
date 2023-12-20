@@ -1,14 +1,8 @@
-import { useContext } from "react";
-import { SudokuContext } from "../SudokuContext";
+import useNumberButtonClick from "../hooks/useNumberButtonClick";
 
-const NumbersButtons = ({}) => {
-  const {setText, setNumberToAdd} = useContext(SudokuContext)
+const NumbersButtons = () => {
+    const {handleNumberClick} = useNumberButtonClick()
     const numbers = [1,2,3,4,5,6,7,8,9];
-
-    const handleNumberClick = (e) => {
-      setNumberToAdd(Number(e.target.value))
-      setText('Has clic en el botón "Colocar número"')
-    }
 
   return (
     <div className='numberButtonsContainer'>
