@@ -4,10 +4,14 @@ import Computer from './Computer'
 import ResetButton from './ResetButton'
 import { TicTacToeContext } from '../TicTacToeContext'
 import useGameState from '../hooks/useGameState'
+import useTurn from '../hooks/useTurn'
 
 const PlayingWindow = () => {
-  const { setText, board, setBoard, player, setTurn, turn, winner } = useContext(TicTacToeContext);
+  const { setText, board, setBoard, player, turn, winner } = useContext(TicTacToeContext);
+
   const {checkTie, checkWinner} = useGameState()
+  const {passTurnTo} = useTurn()
+  
   const handleBoardInput = useCallback(
     (index, currentPlayer) => {
       if (player == null) {
@@ -32,22 +36,6 @@ const PlayingWindow = () => {
       checkTie(newBoard)
     }
     , [winner, turn]);
-
-
-  //cambia el estado de turno para saber quien esta jugando
-  const passTurnTo = (nextPlayer) => {
-    if (nextPlayer === null) {
-      return;
-    } else if (nextPlayer === "computadora") {
-      setTurn("computadora");
-      setText('Turno de la computadora')
-    } else if (nextPlayer === "player") {
-      setTurn("player");
-      setText('Turno del jugador')
-    }
-  };
-
-  //Checa si alguien gano
 
   return (
     <div className='ticBoardWindow'>

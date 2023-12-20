@@ -1,8 +1,12 @@
 import React, { useContext, useEffect } from 'react'
 import { TicTacToeContext } from '../TicTacToeContext'
+import useBoardInput from '../hooks/useBoardInput'
 
-const Computer = ({ handleBoardInput }) => {
+const Computer = () => {
+
   const { setComputer, player, computer, board, winner, turn } = useContext(TicTacToeContext)
+
+  const{handleBoardInput} = useBoardInput()
   useEffect(() => {
     setComputer(player === 'X' ? 'O' : 'X')
   }), [player]
@@ -16,10 +20,8 @@ const Computer = ({ handleBoardInput }) => {
 
   useEffect(() => {
     if (turn === 'computadora' && winner == null) {
-
       const freeIndex = chooseFreeSpace(board);
       handleBoardInput(freeIndex, computer);
-
     }
   }, [winner, turn])
 
