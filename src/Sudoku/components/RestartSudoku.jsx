@@ -1,12 +1,7 @@
-import { useContext } from "react";
-import { SudokuContext } from "../SudokuContext";
+import useRestart from "../hooks/useRestart"
 
-const RestartSudoku = ({}) => {
-const {copyOfSudoku,setSudokuBoard} = useContext(SudokuContext)
-    const handleRestart = () => {
-    const copyOfCopy = JSON.parse(JSON.stringify(copyOfSudoku));
-    setSudokuBoard(copyOfCopy)
-    }
+const RestartSudoku = () => {
+  const {handleRestart} = useRestart()
 
   return (
     <>
