@@ -1,11 +1,11 @@
-import React from 'react'
+
 import StartButton from './StartButton'
 
-const WinWindow = ({setWordToGuess, listOfWords, setStrike, setLetterButtons}) => {
+const WinWindow = () => {
   return (
     <>    
     <h1>Ganaste!! 🥳</h1> 
-    <StartButton setWordToGuess={setWordToGuess} listOfWords={listOfWords} setStrike={setStrike} setLetterButtons={setLetterButtons} /></>
+    <StartButton/></>
   )
 }
 
