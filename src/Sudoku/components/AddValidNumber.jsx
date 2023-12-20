@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { SudokuContext } from "../SudokuContext";
 
 const AddValidNumber = () => {
+  
   const {copyOfSudoku,gridIndex,numberToAdd,sudokuBoard,cellIndex,setSudokuBoard,setNumberToAdd,setCellIndex,setText,} = useContext(SudokuContext)
+  
   const handleSubmit = () => {
     if (isNumberNotSelected()) {
       return;

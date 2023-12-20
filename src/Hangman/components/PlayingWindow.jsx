@@ -1,7 +1,6 @@
 import LetterButtons from './LetterButtons'
 import Clues from './Clues'
 import HideLetters from './HideLetters'
-import StartButton from './StartButton'
 import { useContext } from 'react'
 import { HangmanContext } from '../HangmanContex'
 

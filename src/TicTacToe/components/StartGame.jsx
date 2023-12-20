@@ -12,7 +12,6 @@ const {turn,setTurn, setText, player} = useContext(TicTacToeContext)
           setTurn("player");
           setText("El jugador comienza la partida");
             }
-
     };
   return (
     <>

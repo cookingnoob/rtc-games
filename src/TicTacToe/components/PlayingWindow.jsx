@@ -3,10 +3,11 @@ import Board from './Board'
 import Computer from './Computer'
 import ResetButton from './ResetButton'
 import { TicTacToeContext } from '../TicTacToeContext'
+import useGameState from '../hooks/useGameState'
 
 const PlayingWindow = () => {
-  const { setText, board, setBoard, player, setTurn, turn, winningCombinations, winner, setWinner } = useContext(TicTacToeContext);
-
+  const { setText, board, setBoard, player, setTurn, turn, winner } = useContext(TicTacToeContext);
+  const {checkTie, checkWinner} = useGameState()
   const handleBoardInput = useCallback(
     (index, currentPlayer) => {
       if (player == null) {
@@ -47,29 +48,7 @@ const PlayingWindow = () => {
   };
 
   //Checa si alguien gano
-  const checkWinner = (board) => {
-    winningCombinations.forEach(combination => {
-      const [a, b, c] = combination;
-      if (board[a] != null) {
-        if (board[a] == board[b] && board[b] == board[c] && board[a] == board[c]) {
-          if (turn == 'computadora') {
-            setWinner('computadora')
-            setText(`Ganó la computadora!! 🤖`);
-          } else if (turn == 'player') {
-            setWinner('jugador')
-            setText('Gano el jugador 🧘🏽')
-          }
-        }
-      }
-    }
-    )
-  }
 
-  const checkTie = (board) => {
-    if (board.every(cell => cell != null)) {
-      setText('Empate')
-    }
-  }
   return (
     <div className='ticBoardWindow'>
       {turn != null && player != null ? <>
