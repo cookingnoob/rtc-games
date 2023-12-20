@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext} from 'react'
 import { HangmanContext } from '../HangmanContex'
 import useHideLetters from '../hooks/useHideLetters';
 

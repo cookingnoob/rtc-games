@@ -1,12 +1,12 @@
 import { HangmanProvider } from "./HangmanContex"
-import StartWindow from "./components/StartWindow"
+import GameFlowWindow from "./components/GameFlowWindow"
 
 
 const Hangman = () => {
 
   return (
   <HangmanProvider>
-  <StartWindow/>
+  <GameFlowWindow/>
   </HangmanProvider>
   )
 }
