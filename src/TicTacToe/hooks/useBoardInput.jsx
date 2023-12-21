@@ -14,19 +14,14 @@ const useBoardInput = () => {
       if(!isValidMove(index)){
         return;
       }
-
         const newBoard = [...board];
         newBoard[index] = currentPlayer;
-        setBoard(newBoard);
-
-        if (turn === 'computadora') {
-          passTurnTo('player')
-        } else if (turn === 'player') {
-          passTurnTo('computadora')
-        }
+        setBoard(newBoard)
+        passTurnTo(turn === 'computadora' ? 'player' : 'computadora')
         checkWinner(newBoard);
         checkTie(newBoard)
       }
+
 
       const isValidMove = (index) => {
         if (player == null) {
