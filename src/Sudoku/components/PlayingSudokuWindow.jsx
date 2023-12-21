@@ -1,5 +1,5 @@
 import Board from './Board'
-import NumbersButtons from './numbersButtons'
+import NumbersButtons from './NumbersButtons'
 import DeleteButton from './DeleteButton'
 import AddValidNumber from './AddValidNumber'
 import StartSudoku from './StartSudoku'
@@ -10,7 +10,7 @@ const PlayingSudokuWindow = () => {
   return (
     <>
     <Board />
-    <NumbersButtons />
+    < NumbersButtons/>
     <div className="modifySudoku">
       <AddValidNumber />
       <DeleteButton  />
