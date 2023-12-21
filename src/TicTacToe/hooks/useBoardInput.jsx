@@ -11,14 +11,9 @@ const useBoardInput = () => {
     const {passTurnTo} = useTurn()
 
     const handleBoardInput = (index, currentPlayer) => {
-        if (player == null) {
-          setText("Has clic en el botón para iniciar la partida");
-          return;
-        } else if (board[index] !== null) {
-          return;
-        } else if (winner != null) {
-          return
-        }
+      if(!isValidMove(index)){
+        return;
+      }
 
         const newBoard = [...board];
         newBoard[index] = currentPlayer;
@@ -33,7 +28,18 @@ const useBoardInput = () => {
         checkTie(newBoard)
       }
 
-
+      const isValidMove = (index) => {
+        if (player == null) {
+          setText("Has clic en el botón para iniciar la partida");
+          return false
+        } else if (board[index] !== null) {
+          return false
+        } else if (winner != null) {
+          return false
+        }
+        return true
+      }
+      
 
   return {handleBoardInput}
 }
