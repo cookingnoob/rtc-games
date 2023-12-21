@@ -3,7 +3,7 @@ import { TicTacToeContext } from '../TicTacToeContext'
 
 const useGameState = () => {
     const {setWinner, setText, winningCombinations, turn} = useContext(TicTacToeContext);
-
+  //declares winner if one of the conditions has been met
     const checkWinner = (board) => {
         winningCombinations.forEach(combination => {
           const [a, b, c] = combination;
@@ -21,7 +21,7 @@ const useGameState = () => {
         }
         )
       }
-
+      //if no one won it is a tie
       const checkTie = (board) => {
         if (board.every(cell => cell != null)) {
           setText('Empate')

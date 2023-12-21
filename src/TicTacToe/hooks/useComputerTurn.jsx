@@ -3,7 +3,7 @@ import { TicTacToeContext } from '../TicTacToeContext'
 import useBoardInput from '../hooks/useBoardInput'
 
 const useComputerTurn = () => {
-    const {computer, board, winner, turn } = useContext(TicTacToeContext)
+    const {computer, board, winner, turn,setIsBoardDisabled } = useContext(TicTacToeContext)
     const{handleBoardInput} = useBoardInput()
   
     //Checks which cell is empty and chooses one randomly
@@ -17,8 +17,12 @@ const useComputerTurn = () => {
   //selects one free space on the board and prints computer value on that cell
     useEffect(() => {
       if (turn === 'computadora' && winner == null) {
-        const freeIndex = chooseFreeSpace(board);
-        handleBoardInput(freeIndex, computer);
+        setIsBoardDisabled(true)
+        setTimeout(() => {
+          const freeIndex = chooseFreeSpace(board);
+          handleBoardInput(freeIndex, computer);
+          setIsBoardDisabled(false)
+        }, 500)
       }
     }, [winner, turn])
   
