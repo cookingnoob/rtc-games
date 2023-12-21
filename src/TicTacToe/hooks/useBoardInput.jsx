@@ -5,21 +5,23 @@ import useTurn from './useTurn';
 
 const useBoardInput = () => {
     const {player, board, winner, turn, setBoard, setText} = useContext(TicTacToeContext);
-    const {checkTie, checkWinner} = useGameState() 
+
+    const {checkTie, checkWinner} = useGameState()
+  
     const {passTurnTo} = useTurn()
   
-
     const handleBoardInput = useCallback(
       (index, currentPlayer) => {
         if(!isValidMove(index)) return;
         addValueToBoard(currentPlayer, index)
+        checkWinner();
+        checkTie()
         passTurnTo(turn === 'computadora' ? 'player' : 'computadora')
-        checkWinner(board);
-        checkTie(board)
+       
       }
       , [winner, turn]);
 
-    const isValidMove = (index) => {
+      const isValidMove = (index) => {
         if (player == null) {
             setText("Has clic en el botón para iniciar la partida");
             return;
@@ -31,7 +33,7 @@ const useBoardInput = () => {
           return true
       }
   
-    const addValueToBoard = (currentPlayer, index) => {
+      const addValueToBoard = (currentPlayer, index) => {
         const newBoard = [...board];
         newBoard[index] = currentPlayer;
         setBoard(newBoard);

@@ -147,7 +147,6 @@ button:focus-visible {
   padding: 10px;
 }
 .lettersContainer{
-
 height: 30vw;
 width: 70vw;
 display: flex;
@@ -222,4 +221,61 @@ height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 500px) {
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navLink {
+    font-size: medium;
+    width: 80px;
+    padding: 5px;
+  }
+
+  .ticBoardWindow > button,
+  .numberButtons {
+    width: 40px;
+    height: 40px;
+  }
+  .numberButtonsContainer{
+    gap: 5px;
+    }
+  .sudokuCell {
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+  }
+
+  .sudokuGrid {
+    grid-template-columns: repeat(3, minmax(15px, 1fr));
+    grid-template-rows: repeat(3, minmax(15px, 1fr));
+    max-width: 100%; 
+  }
+
+  .hangmanContainer {
+    height: 80vw;
+    width: 90vw;
+  }
+  .hangmanContainer > h1{
+    font-size: 80px;
+  }
+  .lettersContainer {
+    height: 25vw;
+    width: 80vw;
+  }
+
+  .letterButton {
+    height: 60px;
+  }
+
+  .clues, .modifySudoku, .refreshSudoku {
+    max-width: 90%;
+  }
+  footer{
+    display: none;
+  }
 }
