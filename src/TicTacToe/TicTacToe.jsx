@@ -1,12 +1,15 @@
+import { LoginContext, LoginProvider } from "../Login/LoginContext";
 import { TicTacToeProvider } from "./TicTacToeContext";
 import StartWindow from "./components/StartWindow";
 
 const TicTacToe = () => {
 
   return (
-<TicTacToeProvider>
+    <LoginProvider>
+  <TicTacToeProvider>
   <StartWindow/>
-</TicTacToeProvider>
+  </TicTacToeProvider>
+  </LoginProvider>
   );
 };
 

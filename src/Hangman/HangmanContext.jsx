@@ -9,6 +9,7 @@ export const HangmanProvider = ({children}) => {
     const [playerString, setPlayerString] = useState('')
     const [clue, setClue] =useState('')
     const [listOfWrongLetters, setListOfWrongLetters] = useState([])
+    const [giveUp, setGiveUp] = useState(false)
     const listOfWords = ['celular', 'paella', 'computadora', 'audifonos', 'chocolate', 'huevo', 'guitarra', 'flauta', 'violin', 'libro']
     
     const ContextValue = {
@@ -24,7 +25,9 @@ export const HangmanProvider = ({children}) => {
         clue,
         setClue,
         listOfWrongLetters, 
-        setListOfWrongLetters
+        setListOfWrongLetters,
+        giveUp, 
+        setGiveUp
     }
 
     return(

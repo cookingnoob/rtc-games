@@ -5,12 +5,12 @@ import PlayingWindow from './PlayingWindow';
 import YouLostWindow from'./YouLostWindow'
 import WinWindow from './WinWindow'
 const StartWindow = () => {
-    const {strike, wordToGuess, playerString} = useContext(HangmanContext)
+    const {strike, wordToGuess, playerString, giveUp} = useContext(HangmanContext)
   return (
     <>
     <h1 className="gameTitle">Hangman</h1>
   
-    {strike === '❌❌❌❌❌❌' ? 
+    {strike === '❌❌❌❌❌❌' || giveUp ? 
       <> 
     <YouLostWindow/>
       </> 

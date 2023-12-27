@@ -156,6 +156,7 @@ flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 gap: 10px;
+margin-bottom: 10px;
 }
 .letterButton{
 height: 80px;

@@ -1,8 +1,12 @@
 import { useContext } from 'react'
 import { TicTacToeContext } from '../TicTacToeContext'
+import { LoginContext } from '../../Login/LoginContext';
+import useLocalUser from '../../Login/hooks/useLocalUser';
 
 const useGameState = () => {
     const {setWinner, setText, winningCombinations, turn, winner} = useContext(TicTacToeContext);
+    const {user} = useContext(LoginContext)
+    useLocalUser()
   //declares winner if one of the conditions has been met
     const checkWinner = (board) => {
         winningCombinations.forEach(combination => {
@@ -14,7 +18,7 @@ const useGameState = () => {
                 setText(`Ganó la computadora!! 🤖`);
               } else if (turn == 'player') {
                 setWinner('jugador')
-                setText('Gano el jugador 🧘🏽')
+                setText(`Gano ${user.name} 🧘🏽`)
               }
             }
           }

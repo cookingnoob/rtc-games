@@ -1,9 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import './App.css'
-import Hangman from './Hangman/Hangman'
-import Sudoku from './Sudoku/Sudoku'
-import TicTacToe from './TicTacToe/TicTacToe'
-import { useEffect, useState } from 'react'
 
 function App() {
 
@@ -16,6 +12,7 @@ function App() {
     <NavLink to="tic-tac-toe" className='navLink'>TicTacToe</NavLink>
     <NavLink to="hangman" className='navLink'>Hangman</NavLink>
     <NavLink to="sudoku" className='navLink'>Sudoku</NavLink>
+    <NavLink to="login" className='navLink'>Login</NavLink>
     </nav>
     <main>
       <Outlet />
