@@ -62,6 +62,8 @@ footer{
   justify-content: center;
   align-items: center;
   font-size: large;
+  position: relative;
+  bottom: 0;
 }
 button {
   border-radius: 8px;
@@ -164,7 +166,9 @@ height: 80px;
 .clues{
   max-width: 500px;
 }
-
+.listOfWrongLetters{
+  text-decoration: line-through;
+}
 /* -------------------SUDOKU */
 .sudokuContainer{
   display: flex;

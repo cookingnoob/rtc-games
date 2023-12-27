@@ -6,11 +6,12 @@ import { HangmanContext } from '../HangmanContext'
 import useClues from '../hooks/useClues'
 
 const PlayingWindow = () => {
-const {strike, clue} = useContext(HangmanContext)
+const {strike, clue, listOfWrongLetters} = useContext(HangmanContext)
 useClues()
   return (
     <>
        <h1>{strike}</h1>
+       <h2 className='listOfWrongLetters'>{listOfWrongLetters}</h2>
     {strike === '❌❌❌❌❌' ? <p>último intento💀</p> : <></>}
     <HideLetters />
     <p className='clues'>{clue}</p>
