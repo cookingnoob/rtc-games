@@ -5,10 +5,14 @@ import AddValidNumber from './AddValidNumber'
 import StartSudoku from './StartSudoku'
 import RestartSudoku from './RestartSudoku'
 import SolveButton from './SolveButton'
+import { useContext } from 'react'
+import { SudokuContext } from '../SudokuContext'
 
 const PlayingSudokuWindow = () => {
+  const {text} = useContext(SudokuContext)
   return (
     <>
+    <h1>{text}</h1>
     <Board />
     < NumbersButtons/>
     <div className="modifySudoku">
@@ -25,5 +29,3 @@ const PlayingSudokuWindow = () => {
 }
 
 export default PlayingSudokuWindow
-
-// solution={solution} setSolution={setSolution}
