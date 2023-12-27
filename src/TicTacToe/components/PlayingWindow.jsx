@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import Board from './Board'
 import ResetButton from './ResetButton'
 import { TicTacToeContext } from '../TicTacToeContext'

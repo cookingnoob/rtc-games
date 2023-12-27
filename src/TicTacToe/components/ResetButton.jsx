@@ -1,4 +1,3 @@
-
 import useRestart from '../hooks/useRestart'
 
 const ResetButton = () => {
