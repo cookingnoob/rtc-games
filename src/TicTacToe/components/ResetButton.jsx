@@ -1,10 +1,10 @@
 import useRestart from '../hooks/useRestart'
 
 const ResetButton = () => {
-  const {resetGame} = useRestart()
+  const { resetGame } = useRestart()
   return (
     <>
-        <button onClick={resetGame}>Reinicia el juego </button>
+      <button onClick={resetGame}>Reinicia el juego </button>
     </>
   )
 }
