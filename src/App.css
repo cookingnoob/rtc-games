@@ -3,7 +3,6 @@
   src: url(./assets/Amatic_SC/AmaticSC-Regular.ttf);
   font-weight: normal;
   font-style: normal;
- 
 }
 @font-face {
   font-family: Amatic-bold;
@@ -12,24 +11,27 @@
   font-style: normal;
 }
 *{
-  margin: 0%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body{
   font-family: Amatic;
-
-  margin: 0%;
-  width: 100vw;
+  margin: 0;
+  width: 100%;
   height: 100vh;
+  overflow-x: hidden; /* Evitar scroll horizontal */
 }
 
 header{
-  font-family:Amatic-bold ;
+  font-family: Amatic-bold;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 nav{
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -73,7 +75,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-   cursor: pointer;
+  cursor: pointer;
   transition: border-color 0.25s;
 } 
 button:hover {
@@ -136,7 +138,7 @@ button:focus-visible {
 /* -------------------HANGMAN */
 .hangmanContainer{
   height: 80vw;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,21 +151,20 @@ button:focus-visible {
   padding: 10px;
 }
 .lettersContainer{
-height: 30vw;
-width: 70vw;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-gap: 10px;
-margin-bottom: 10px;
+  height: 30vw;
+  width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 .clueBtn{
-
   margin-top: 30px;
 }
 .letterButton{
-height: 60px;
+  height: 60px;
 }
 .wrongLetter{
   background-color: red;
@@ -182,10 +183,9 @@ height: 60px;
 }
 .columnSpace{
   width: 60px;
-
 }
 .rowSpace{
- height: 10px;
+  height: 10px;
 }
 .sudokuGrid{
   display: flex;
@@ -226,25 +226,22 @@ height: 60px;
 .numberButtons{
   height: 40px;
   width: 40px;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 @media (max-width: 500px) {
-
   nav {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .navLink {
     font-size: medium;
     width: 80px;
     padding: 5px;
   }
-
   .ticBoardWindow > button,
   .numberButtons {
     width: 90px;
@@ -252,13 +249,12 @@ height: 60px;
   }
   .numberButtonsContainer{
     gap: 5px;
-    }
+  }
   .sudokuCell {
     height:35px;
     width: 35px;
     font-size: 12px;
   }
-
   .sudokuGrid {
     grid-template-columns: repeat(3, minmax(15px, 1fr));
     grid-template-rows: repeat(3, minmax(15px, 1fr));
@@ -289,7 +285,6 @@ height: 60px;
   .letterButton {
     height: 60px;
   }
-
   .clues, .modifySudoku, .refreshSudoku {
     max-width: 90%;
   }
