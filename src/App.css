@@ -127,9 +127,11 @@ button:focus-visible {
   align-items: center;
   flex-direction: column;
   gap: 5px;
+  
 }
 .ticBoardWindow >button{
   width: 150px;
+  
 }
 .ticValueButtons{
   display: flex;
@@ -236,29 +238,57 @@ button:focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 90vw;
+  }
+  body{
+    width: 100vw;
+
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
   }
   .navLink {
     font-size: medium;
-    width: 80px;
-    padding: 5px;
+    width: 3.5rem;
+    padding: .5rem;
   }
   .ticBoardWindow > button,
   .numberButtons {
-    width: 90px;
-    height: 40px;
+    width: 5rem;
+    height: 5rem;
+  }
+  .board{
+    grid-template-columns: repeat(3, minmax(1rem, 1fr));
+    grid-template-rows: repeat(3, minmax(1rem, 1fr));
+    margin-bottom: 1rem;
+  }
+  .checkerValue{
+    font-size: 20px;
+
+    height: 3rem;
+  }
+  .cell{
+    font-size: 30px;
+    height: 7rem;
+    width: 7rem;
   }
   .numberButtonsContainer{
-    gap: 5px;
+    gap: .1rem;
   }
   .sudokuCell {
-    height:35px;
-    width: 35px;
+    height:1.5rem;
+    width: 1.5rem;
     font-size: 12px;
+
   }
   .sudokuGrid {
-    grid-template-columns: repeat(3, minmax(15px, 1fr));
-    grid-template-rows: repeat(3, minmax(15px, 1fr));
-    max-width: 100%; 
+    grid-template-columns: repeat(3, minmax(1rem, 1fr));
+    grid-template-rows: repeat(3, minmax(1rem, 1fr));
+
+
   }
   .gameTitle{
    display: none;
@@ -267,24 +297,19 @@ button:focus-visible {
     height: 20px;
     width: 20px;
     margin: 10px;
+
+  }
+  .numberButtons{
+    height: 2.5rem;
   }
   .hangmanContainer {
-    height: 80vw;
-    width: 90vw;
+    height: 90vh;
   }
-  .hangmanContainer > h1{
-    font-size: 80px;
-  }
+  
   .lettersContainer {
-    height: 25vw;
-    width: 80vw;
+    height: 22rem;
   }
-  .clueBtn{
-    margin-top: 80px;
-  }
-  .letterButton {
-    height: 60px;
-  }
+
   .clues, .modifySudoku, .refreshSudoku {
     max-width: 90%;
   }
